@@ -1,6 +1,4 @@
-/* ================================
-   GLOBAL RESET & BASE TYPOGRAPHY
-================================== */
+/* ===== Reset ===== */
 *,
 *::before,
 *::after {
@@ -10,114 +8,101 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #eef1f7;               /* soft grey background */
-  color: #1f2937;                     /* neutral dark grey */
+}
+
+/* ===== Base typography & background ===== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.7;
+  color: #111827;
+  background: #e5e7eb;          /* soft grey background */
 }
 
-/* ================================
-   LAYOUT CONTAINER
-================================== */
-.container {
-  width: 100%;
-  max-width: 950px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+/* Keep content centered and narrow */
+header,
+section,
+footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* ================================
-   HEADER
-================================== */
+/* ===== Header ===== */
 header {
-  text-align: center;
-  margin-bottom: 2rem;
   padding-top: 2.5rem;
+  padding-bottom: 1.75rem;
+  text-align: center;
+  background: #0b3b75;          /* deep blue bar */
+  color: #f9fafb;
+  margin-bottom: 2.5rem;
 }
 
 header h1 {
-  font-size: 2.3rem;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 650;
 }
 
 header p {
-  font-size: 1.1rem;
-  color: #4b5563;
+  margin: 0.5rem 0 0;
+  font-size: 1.05rem;
+  opacity: 0.9;
 }
 
-/* ================================
-   NAVIGATION BAR
-================================== */
+/* ===== Navigation ===== */
 nav {
   margin-top: 1.5rem;
 }
 
 nav ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
 }
 
 nav a {
   text-decoration: none;
+  color: #e5e7eb;
   font-size: 0.95rem;
-  color: #374151;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  transition: 0.2s ease;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-nav a:hover {
-  background: #dbeafe;               /* light blue highlight */
-  color: #1e40af;
+nav a:hover,
+nav a:focus {
+  border-bottom-color: #facc15;   /* warm yellow underline */
+  color: #fef9c3;
 }
 
-/* ================================
-   CARD STYLING FOR EACH SECTION
-================================== */
-.card {
+/* ===== Main section as a "card" ===== */
+section {
   background: #ffffff;
-  padding: 1.8rem 2rem;
-  margin-bottom: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-  transition: box-shadow 0.25s ease;
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  margin-bottom: 2.5rem;
 }
 
-.card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
-}
-
-/* ================================
-   TYPOGRAPHY INSIDE CARDS
-================================== */
-.card h2 {
+section h2 {
   margin-top: 0;
-  font-weight: 600;
-  color: #111827;
+  font-size: 1.7rem;
   margin-bottom: 1rem;
-  font-size: 1.6rem;
+  color: #111827;
 }
 
-.card p,
-.card li {
-  font-size: 1.02rem;
+section p {
+  margin: 0.4rem 0 0.9rem;
 }
 
-.card ul {
-  padding-left: 1.3rem;
-  margin-top: 0.5rem;
-}
-
-/* ================================
-   LINKS
-================================== */
+/* ===== Links ===== */
 a {
   color: #2563eb;
 }
@@ -126,34 +111,32 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ================================
-   FOOTER
-================================== */
+/* ===== Footer ===== */
 footer {
-  margin-top: 2rem;
   text-align: center;
-  font-size: 0.9rem;
-  color: #6b7280;
-  padding-bottom: 2rem;
+  padding: 1.5rem 1.5rem 2.5rem;
+  font-size: 0.92rem;
+  color: #4b5563;
 }
 
 footer a {
   color: #2563eb;
 }
 
-/* ================================
-   RESPONSIVE DESIGN
-================================== */
+/* ===== Responsive tweaks ===== */
 @media (max-width: 640px) {
-  .card {
-    padding: 1.4rem 1.3rem;
-  }
-
-  nav ul {
-    gap: 0.7rem;
+  header,
+  section,
+  footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   header h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 1.6rem 1.4rem;
   }
 }
