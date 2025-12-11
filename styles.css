@@ -18,11 +18,10 @@ html, body {
 body {
     margin: 0;
     padding: 0;
-    background: #f5f7fa; /* Light greyish background */
+    background: linear-gradient(180deg, #f7f9fc, #e9eef5);
     font-family: 'Inter', sans-serif;
     color: #1a1a1a;
 }
-
 
 /* Limit width -- EXCLUDING the profile card */
 header,
