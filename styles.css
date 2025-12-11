@@ -120,23 +120,14 @@ section h2 {
   margin-bottom: 1rem;
 }
 section h2.welcome-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #0f172a;
-  position: relative;
   display: inline-block;
-  margin-bottom: 1.2rem;
-}
-
-section h2.welcome-title::after {
-  content: "";
-  width: 60%;
-  height: 3px;
-  background: #2563eb; /* blue accent */
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  border-radius: 2px;
+  font-size: 2rem;
+  font-weight: 600;
+  background: #eef2ff;
+  color: #1e1b4b;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1.3rem;
 }
 
 
