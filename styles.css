@@ -179,10 +179,10 @@ a:hover {
 }
 
 /* ============================================================
-   TWO-COLUMN PROFILE CARD LAYOUT — NOW WITH RIGHT PHOTO COLUMN
+   PROFILE CARD LAYOUT — LEFT PHOTO, CENTER TEXT, RIGHT PHOTOS
 =============================================================== */
 section.profile-card {
-  max-width: 960px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
 
   /* Remove default section styling */
@@ -192,16 +192,21 @@ section.profile-card {
   margin-top: 2rem !important;
   margin-bottom: 3rem !important;
 
-  /* Activate multi-column layout */
+  /* Three-column layout */
   display: flex !important;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;  /* push items to left, center, right */
   gap: 2rem;
   padding: 2.4rem !important;
   text-align: left !important;
 }
 
-/* Left-side main photo */
+/* Left image column */
+section.profile-card .photo-container {
+  flex: 0 0 260px; /* fixed-ish width */
+}
+
 section.profile-card .photo-container img {
   width: 240px;
   height: 240px;
@@ -210,16 +215,19 @@ section.profile-card .photo-container img {
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
-/* Text column */
+/* Text column (center) */
 section.profile-card .bio-container {
   flex: 1;
+  max-width: 600px;
   min-width: 0;
 }
 
 /* Right-side stacked photos */
 .right-photo-column {
+  flex: 0 0 200px;            /* fixed width on the far right */
   display: flex;
-  flex-direction: column;   /* stack images vertically */
+  flex-direction: column;     /* stack vertically */
+  align-items: flex-end;      /* align to the right edge */
   gap: 1rem;
 }
 
@@ -235,8 +243,13 @@ section.profile-card .bio-container {
 @media (max-width: 760px) {
   section.profile-card {
     flex-direction: column !important;
+    align-items: center !important;
     text-align: center !important;
     padding: 2rem 1.2rem !important;
+  }
+
+  section.profile-card .photo-container {
+    flex: 0 0 auto;
   }
 
   section.profile-card .photo-container img {
@@ -244,11 +257,17 @@ section.profile-card .bio-container {
     height: 200px;
   }
 
-  /* On mobile, arrange right-side photos nicely in rows */
+  section.profile-card .bio-container {
+    max-width: 100%;
+  }
+
+  /* On mobile, arrange right-side photos in rows */
   .right-photo-column {
+    flex: 0 0 auto;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
   }
 
   .right-photo-column img {
