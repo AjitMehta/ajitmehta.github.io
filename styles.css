@@ -24,9 +24,9 @@ body {
   background-attachment: fixed;
 }
 
-/* Limit width of content globally */
+/* Limit width -- EXCLUDING the profile card */
 header,
-section {
+section:not(.profile-card) {
   max-width: 960px;
   margin: 0 auto;
   padding-left: 1.5rem;
@@ -57,7 +57,7 @@ header p {
 }
 
 /* ================================
-   NAVIGATION (glassy pill)
+   NAVIGATION
 ================================== */
 nav {
   margin-top: 1.8rem;
@@ -96,9 +96,10 @@ nav a:focus {
 }
 
 /* ================================
-   MAIN CARD SECTION
+   DEFAULT SECTION CARD
+   (EXCLUDES profile-card)
 ================================== */
-section {
+section:not(.profile-card) {
   background: rgba(248, 250, 252, 0.96);
   border-radius: 18px;
   padding: 2.2rem 2.4rem;
@@ -122,6 +123,7 @@ section p {
   color: #111827;
 }
 
+/* Lists */
 section ul,
 section ol {
   padding-left: 1.3rem;
@@ -149,7 +151,7 @@ a:hover {
 ================================== */
 @media (max-width: 640px) {
   header,
-  section {
+  section:not(.profile-card) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -158,28 +160,36 @@ a:hover {
     font-size: 2.1rem;
   }
 
-  section {
+  section:not(.profile-card) {
     padding: 1.7rem 1.4rem;
     margin-top: -0.8rem;
   }
 }
 
 /* ============================================================
-   TWO-COLUMN PROFILE CARD LAYOUT 
-   (THIS FIXES THE ISSUE — MUST OVERRIDE DEFAULT SECTION STYLE)
+   TWO-COLUMN PROFILE CARD LAYOUT — FINAL FIXED VERSION
 =============================================================== */
-
 section.profile-card {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+
+  /* Remove default section styling */
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin-top: 2rem !important;
+  margin-bottom: 3rem !important;
+
+  /* Activate two-column layout */
   display: flex !important;
   flex-direction: row;
-  gap: 2rem;
   align-items: center;
-  justify-content: flex-start;
+  gap: 2rem;
   padding: 2.4rem !important;
   text-align: left !important;
 }
 
-/* Photo column */
+/* Photo */
 section.profile-card .photo-container img {
   width: 240px;
   height: 240px;
@@ -194,11 +204,12 @@ section.profile-card .bio-container {
   min-width: 0;
 }
 
-/* Mobile: stack vertically */
+/* Mobile layout */
 @media (max-width: 760px) {
   section.profile-card {
     flex-direction: column !important;
     text-align: center !important;
+    padding: 2rem 1.2rem !important;
   }
 
   section.profile-card .photo-container img {
