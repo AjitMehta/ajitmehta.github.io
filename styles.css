@@ -172,3 +172,37 @@ a:hover {
     margin-top: -0.8rem;
   }
 }
+
+/* Profile Card Layout -------------------------------------- */
+
+.profile-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.4rem;
+}
+
+.photo-container img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.bio-container {
+  flex: 1;
+}
+
+@media (max-width: 760px) {
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .photo-container img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
