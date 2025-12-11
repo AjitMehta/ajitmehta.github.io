@@ -39,7 +39,8 @@ header {
   padding-top: 3rem;
   padding-bottom: 2.5rem;
   text-align: center;
-  color: #e5e7eb;
+  /* removed light text color so it doesn't fade */
+  /* color: #e5e7eb; */
 }
 
 header h1 {
@@ -47,14 +48,14 @@ header h1 {
   font-size: 2.6rem;
   letter-spacing: 0.04em;
   margin: 0 0 0.3rem;
-  color: #0a0a0a; /* dark / almost black */
+  color: #111827; /* dark navy/black */
 }
 
 header p {
   margin: 0.3rem 0 0;
   font-size: 1.05rem;
-  opacity: 1;         /* remove faint look */
-  color: #333333;     /* dark grey */
+  opacity: 1;              /* fully opaque */
+  color: #4b5563;          /* dark grey */
 }
 
 /* ================================
