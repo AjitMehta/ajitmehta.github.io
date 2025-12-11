@@ -275,3 +275,18 @@ section.profile-card .bio-container {
     height: 160px;
   }
 }
+
+.photo-credit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* keep text aligned with the image */
+}
+
+.credit-text {
+  font-size: 0.8rem;
+  color: #6b7280; /* soft gray */
+  margin-top: 0.3rem;
+  text-align: right;
+  max-width: 180px;
+}
+
