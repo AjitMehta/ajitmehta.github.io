@@ -1,219 +1,66 @@
-/* ================================
-   RESET
-================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajit Kumar Mehta – Gravitational Wave Astrophysicist</title>
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-/* ================================
-   BASE
-================================== */
-body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.7;
-  color: #0f172a;
-  background: radial-gradient(circle at top, #0b3b75 0, #020617 30%, #f3f4f6 75%);
-  background-attachment: fixed;
-}
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-/* Limit width -- EXCLUDING the profile card */
-header,
-section:not(.profile-card) {
-  max-width: 960px;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
+<body>
 
-/* ================================
-   HEADER / HERO
-================================== */
-header {
-  padding-top: 3rem;
-  padding-bottom: 2.5rem;
-  text-align: center;
-  color: #e5e7eb;
-}
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h1>Ajit Kumar Mehta</h1>
+        <p>Gravitational Wave Astrophysicist | CMI</p>
 
-header h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.6rem;
-  letter-spacing: 0.04em;
-  margin: 0 0 0.3rem;
-}
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="talks.html">Talks</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cv.pdf" target="_blank">CV</a></li>
+            </ul>
+        </nav>
+    </header>
 
-header p {
-  margin: 0.3rem 0 0;
-  font-size: 1.05rem;
-  opacity: 0.9;
-}
 
-/* ================================
-   NAVIGATION
-================================== */
-nav {
-  margin-top: 1.8rem;
-}
+    <!-- ===== PROFILE CARD (TWO-COLUMN LAYOUT) ===== -->
+    <section class="profile-card">
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  background: rgba(15, 23, 42, 0.7);
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
-}
+        <div class="photo-container">
+            <!-- Make sure profile.jpg exists in the same folder -->
+            <img src="profile.jpg" alt="Ajit Kumar Mehta">
+        </div>
 
-nav a {
-  text-decoration: none;
-  color: #e5e7eb;
-  font-size: 0.9rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  transition: 0.2s ease;
-}
+        <div class="bio-container">
+            <h2>Welcome</h2>
 
-nav a:hover,
-nav a:focus {
-  background: #facc15;
-  color: #1f2937;
-  transform: translateY(-1px);
-}
+            <p>
+                I am an Assistant Professor at the 
+                <a href="https://www.cmi.ac.in/">Chennai Mathematical Institute</a> (CMI),
+                specializing in gravitational-wave astronomy.
+                My work spans waveform modeling of compact binary mergers, tests of General Relativity,
+                gravitational lensing of gravitational waves, compact-binary population inference,
+                and the development of advanced data-analysis tools for the 
+                LIGO–Virgo–KAGRA–LIGO India (LVK–LI) network and future detectors.
+            </p>
 
-/* ================================
-   DEFAULT SECTION CARD
-   (EXCLUDES profile-card)
-================================== */
-section:not(.profile-card) {
-  background: rgba(248, 250, 252, 0.96);
-  border-radius: 18px;
-  padding: 2.2rem 2.4rem;
-  margin-top: -1.2rem;
-  margin-bottom: 3rem;
-  box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.25),
-    0 0 0 1px rgba(148, 163, 184, 0.25);
-}
+            <p>
+                This website provides an overview of my research, publications, talks, and CV.
+            </p>
+        </div>
 
-section h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #0f172a;
-  margin-bottom: 1rem;
-}
+    </section>
 
-section p {
-  margin: 0.4rem 0 0.9rem;
-  color: #111827;
-}
 
-/* Lists */
-section ul,
-section ol {
-  padding-left: 1.3rem;
-  margin-top: 0.4rem;
-  margin-bottom: 1rem;
-}
-
-section li {
-  margin-bottom: 0.35rem;
-}
-
-/* ================================
-   LINKS
-================================== */
-a {
-  color: #2563eb;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ================================
-   RESPONSIVE GLOBAL
-================================== */
-@media (max-width: 640px) {
-  header,
-  section:not(.profile-card) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  header h1 {
-    font-size: 2.1rem;
-  }
-
-  section:not(.profile-card) {
-    padding: 1.7rem 1.4rem;
-    margin-top: -0.8rem;
-  }
-}
-
-/* ============================================================
-   TWO-COLUMN PROFILE CARD LAYOUT — FINAL FIXED VERSION
-=============================================================== */
-section.profile-card {
-  max-width: 960px !important;
-  margin: 0 auto !important;
-
-  /* Remove default section styling */
-  background: transparent !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin-top: 2rem !important;
-  margin-bottom: 3rem !important;
-
-  /* Activate two-column layout */
-  display: flex !important;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
-  padding: 2.4rem !important;
-  text-align: left !important;
-}
-
-/* Photo */
-section.profile-card .photo-container img {
-  width: 240px;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-}
-
-/* Text column */
-section.profile-card .bio-container {
-  flex: 1;
-  min-width: 0;
-}
-
-/* Mobile layout */
-@media (max-width: 760px) {
-  section.profile-card {
-    flex-direction: column !important;
-    text-align: center !important;
-    padding: 2rem 1.2rem !important;
-  }
-
-  section.profile-card .photo-container img {
-    width: 200px;
-    height: 200px;
-  }
-}
+</body>
+</html>
