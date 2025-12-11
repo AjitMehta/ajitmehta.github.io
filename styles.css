@@ -120,6 +120,7 @@ section h2 {
   margin-bottom: 1rem;
 }
 
+/* Styled "Welcome!" heading */
 section h2.welcome-title {
   font-size: 2rem;
   font-weight: 700;
@@ -128,8 +129,6 @@ section h2.welcome-title {
   border-left: 4px solid #2563eb; /* blue */
   margin-bottom: 1rem;
 }
-
-
 
 section p {
   margin: 0.4rem 0 0.9rem;
@@ -180,7 +179,7 @@ a:hover {
 }
 
 /* ============================================================
-   TWO-COLUMN PROFILE CARD LAYOUT — FINAL FIXED VERSION
+   TWO-COLUMN PROFILE CARD LAYOUT — NOW WITH RIGHT PHOTO COLUMN
 =============================================================== */
 section.profile-card {
   max-width: 960px !important;
@@ -193,7 +192,7 @@ section.profile-card {
   margin-top: 2rem !important;
   margin-bottom: 3rem !important;
 
-  /* Activate two-column layout */
+  /* Activate multi-column layout */
   display: flex !important;
   flex-direction: row;
   align-items: center;
@@ -202,7 +201,7 @@ section.profile-card {
   text-align: left !important;
 }
 
-/* Photo */
+/* Left-side main photo */
 section.profile-card .photo-container img {
   width: 240px;
   height: 240px;
@@ -217,6 +216,21 @@ section.profile-card .bio-container {
   min-width: 0;
 }
 
+/* Right-side stacked photos */
+.right-photo-column {
+  display: flex;
+  flex-direction: column;   /* stack images vertically */
+  gap: 1rem;
+}
+
+.right-photo-column img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
 /* Mobile layout */
 @media (max-width: 760px) {
   section.profile-card {
@@ -228,5 +242,17 @@ section.profile-card .bio-container {
   section.profile-card .photo-container img {
     width: 200px;
     height: 200px;
+  }
+
+  /* On mobile, arrange right-side photos nicely in rows */
+  .right-photo-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .right-photo-column img {
+    width: 160px;
+    height: 160px;
   }
 }
