@@ -119,6 +119,14 @@ section h2 {
   color: #0f172a;
   margin-bottom: 1rem;
 }
+section h2.welcome-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  padding-left: 0.8rem;
+  border-left: 4px solid #2563eb;
+  margin-bottom: 1rem;
+}
 
 section p {
   margin: 0.4rem 0 0.9rem;
