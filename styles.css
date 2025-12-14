@@ -224,7 +224,7 @@ section.profile-card .bio-container {
 
 /* Right-side stacked photos */
 .right-photo-column {
-  flex: 0 0 200px;            /* fixed width on the far right */
+  flex: 0 0 250px;            /* fixed width on the far right */
   display: flex;
   flex-direction: column;     /* stack vertically */
   align-items: flex-end;      /* align to the right edge */
@@ -232,8 +232,8 @@ section.profile-card .bio-container {
 }
 
 .right-photo-column img {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 14px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
