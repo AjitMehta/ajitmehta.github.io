@@ -288,7 +288,7 @@ section.profile-card .bio-container {
     color: #374151; /* dark gray */
     margin-top: 0.6rem;
     line-height: 1.4;
-    text-align: center;   /* FIXED */
+    text-align: left;   /* FIXED */
     max-width: 260px;     /* keeps text tidy under image */
 }
 
