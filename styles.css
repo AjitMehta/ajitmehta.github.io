@@ -341,7 +341,7 @@ section.profile-card .bio-container {
 
 .talk-title {
   font-weight: 700;
-  color: #0f172a;
+  color: #4169E1; /* RoyalBlue */;
   margin: 0;
   line-height: 1.25;
   font-size: 1.02rem;
@@ -349,7 +349,7 @@ section.profile-card .bio-container {
 
 .talk-meta {
   margin-top: 0.35rem;
-  color: #4169E1; /* RoyalBlue */
+  color: #0f172a; 
   font-size: 0.95rem;
   line-height: 1.35;
 }
