@@ -415,3 +415,9 @@ section.profile-card .bio-container {
     font-size: 0.9rem;
 }
 
+.inst{
+  font-weight: 600;
+  color: #4169E1;   /* RoyalBlue */
+}
+
+
