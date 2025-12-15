@@ -391,3 +391,27 @@ section.profile-card .bio-container {
     padding: 1rem 1rem;
   }
 }
+
+.year {
+    margin-top: 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+}
+
+.talk-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.talk-list li {
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.talk-list .meta {
+    color: #666;
+    font-size: 0.9rem;
+}
+
