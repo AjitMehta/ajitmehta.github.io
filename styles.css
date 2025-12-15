@@ -282,11 +282,18 @@ section.profile-card .bio-container {
   align-items: flex-end; /* keep text aligned with the image */
 }
 
+.caption-text {
+    font-size: 0.85rem;
+    color: #374151; /* dark gray */
+    margin-top: 0.4rem;
+    text-align: right;
+    max-width: 180px;
+}
+
 .credit-text {
-  font-size: 0.8rem;
-  color: #6b7280; /* soft gray */
-  margin-top: 0.3rem;
-  text-align: right;
-  max-width: 180px;
+    font-size: 0.75rem;
+    color: #6b7280; /* lighter gray */
+    margin-top: 0.2rem;
+    text-align: right;
 }
 
