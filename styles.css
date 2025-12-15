@@ -298,3 +298,96 @@ section.profile-card .bio-container {
     color: #6b7280;
     margin-top: 0.2rem;   /* ← VERY SMALL GAP */
 }
+
+/* ================================
+   TALKS PAGE — Cards + layout
+================================== */
+
+.talks-intro {
+  margin-bottom: 1.3rem;
+  color: #374151;
+}
+
+.talks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.talks-section-title {
+  margin-top: 1.7rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.talk-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 1.1rem 1.2rem;
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(148, 163, 184, 0.22);
+}
+
+.talk-top {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.talk-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+  font-size: 1.02rem;
+}
+
+.talk-meta {
+  margin-top: 0.35rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  background: rgba(37, 99, 235, 0.10);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.20);
+  white-space: nowrap;
+}
+
+.badge.secondary {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+.talk-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.35);
+  margin: 1.4rem 0 0.7rem;
+}
+
+@media (min-width: 880px) {
+  .talks-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .talk-card {
+    padding: 1rem 1rem;
+  }
+}
