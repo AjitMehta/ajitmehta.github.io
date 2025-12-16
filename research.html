@@ -1,40 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research – Ajit Kumar Mehta</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research – Ajit Kumar Mehta</title>
 
-    <!-- Fonts (same as index.html) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <!-- Fonts (optional; keep if your other pages use it) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Research-page-only styling (safe to keep here or move into styles.css) -->
+  <style>
+    .hero {
+      padding: 2.2rem 0 1.2rem;
+    }
+    .hero h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    .hero p.lead {
+      margin: 0.75rem 0 0;
+      line-height: 1.65;
+      max-width: 70ch;
+    }
+
+    .pillbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 999px;
+      font-size: 0.92rem;
+      background: rgba(0,0,0,0.02);
+    }
+    .pill .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #4169E1; /* RoyalBlue, matches your theme */
+      opacity: 0.9;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1.3rem;
+    }
+    .card {
+      grid-column: span 6;
+      padding: 1.1rem 1.1rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .card p {
+      margin: 0.4rem 0 0;
+      line-height: 1.65;
+    }
+    .card ul {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      line-height: 1.65;
+    }
+
+    .section-title {
+      margin-top: 2.0rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+    }
+    .section-title .sub {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.02);
+    }
+    .feature h3 { margin: 0 0 0.55rem; font-size: 1.1rem; }
+    .feature p { margin: 0.45rem 0 0; line-height: 1.7; }
+    .feature ul { margin: 0.65rem 0 0; padding-left: 1.15rem; line-height: 1.7; }
+    .feature .aside {
+      border-left: 1px solid rgba(0,0,0,0.08);
+      padding-left: 1rem;
+      opacity: 0.95;
+    }
+
+    .cta {
+      margin-top: 1.5rem;
+      padding: 1.1rem 1.1rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      background: rgba(65,105,225,0.06);
+    }
+    .cta h3 { margin: 0 0 0.45rem; }
+    .cta p { margin: 0.35rem 0 0; line-height: 1.7; }
+    .cta a { font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      .feature { grid-template-columns: 1fr; }
+      .feature .aside { border-left: none; padding-left: 0; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 0.9rem; }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Ajit Kumar Mehta</h1>
-        <p>Gravitational Wave Astrophysicist | CMI</p>
+  <header>
+    <h1>Ajit Kumar Mehta</h1>
+    <p>Gravitational Wave Astrophysicist | CMI</p>
 
-        <nav>
-    <ul>
+    <nav>
+      <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
+        <li><a class="active" href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
-         <li><a href="talks.html">Talks</a></li>
-        <li><a href="CV.pdf" target="_blank">CV</a></li>
+        <li><a href="talks.html">Talks</a></li>
         <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+      </ul>
+    </nav>
+  </header>
 
-    </header>
+  <main class="container">
 
-    <section>
-        <h2>Research</h2>
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Research</h2>
+      <p class="lead">
+        My research uses gravitational-wave observations of compact-binary mergers—especially binary black holes—
+        to probe astrophysics across cosmic time and to test fundamental physics in the strong-field, dynamical regime.
+        A major theme of my work is building end-to-end, robust analysis pipelines: from waveform modeling and searches
+        in real detector noise to population inference and precision tests of General Relativity.
+      </p>
 
+      <div class="pillbar">
+        <span class="pill"><span class="dot"></span> GW searches (IAS-HM / higher modes)</span>
+        <span class="pill"><span class="dot"></span> Compact-binary populations</span>
+        <span class="pill"><span class="dot"></span> Tests of GR (systematics-aware)</span>
+        <span class="pill"><span class="dot"></span> Gravitational lensing of GWs</span>
+        <span class="pill"><span class="dot"></span> Eccentric waveforms</span>
+      </div>
+    </section>
+
+    <!-- QUICK OVERVIEW CARDS -->
+    <section class="grid" aria-label="Research highlights">
+      <article class="card">
+        <h3>Search pipelines & discovery</h3>
         <p>
-           Page under development.
+          I work on methods that detect compact-binary mergers buried in real, non-ideal detector noise, with an emphasis
+          on higher-order harmonics (higher modes) and computational efficiency.
         </p>
+        <ul>
+          <li>Improving sensitivity for challenging sources (unequal masses, high masses, high redshifts).</li>
+          <li>Methods that reduce cost without compromising robustness.</li>
+          <li>Bridging detection and downstream population/physics inference.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Population inference</h3>
+        <p>
+          I use hierarchical Bayesian inference to learn the mass–spin–redshift distribution of compact binaries and
+          connect the observed catalog to formation channels and cosmic evolution.
+        </p>
+        <ul>
+          <li>Including both confident and marginal events in a principled way.</li>
+          <li>Accounting for selection effects and search systematics.</li>
+          <li>Interpreting outliers (e.g., upper-mass-gap candidates, unequal-mass systems).</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Tests of General Relativity</h3>
+        <p>
+          Compact-binary mergers provide an exceptional laboratory for testing GR in the strong-field regime.
+          My focus is on tests that remain reliable as catalogs grow and subtle systematics matter.
+        </p>
+        <ul>
+          <li>Theory-agnostic inspiral tests with flexible waveform choices.</li>
+          <li>Systematics control: missing physics, noise drifts, and environment.</li>
+          <li>Extending tests to include precession/eccentricity where needed.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Gravitational lensing of GWs</h3>
+        <p>
+          Strongly lensed GWs can reveal multiple “images” of the same merger. This enables unique science:
+          dark-matter halo structure, lens reconstruction, and precision cosmology.
+        </p>
+        <ul>
+          <li>Bayesian identification of lensed pairs in catalogs.</li>
+          <li>Synergy with wide-field surveys (e.g., Euclid/LSST) for lens/source follow-up.</li>
+          <li>Toward event localization within the host galaxy for lensed systems.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- THEMES (DETAILED) -->
+    <div class="section-title">
+      <h2>Research themes</h2>
+      <p class="sub">From foundations (waveforms, searches) to inference and precision physics</p>
+    </div>
+
+    <section class="feature">
+      <div>
+        <h3>1) Efficient waveform modeling for discovery and inference</h3>
+        <p>
+          Matched-filter searches require large banks of waveform templates. My work spans both fast phenomenological
+          models for searches and more accurate models for parameter inference, with a continuing effort to close the
+          gap between “what is detectable” and “what is inferable.”
+        </p>
+        <ul>
+          <li><strong>Higher modes</strong> and other effects can boost astrophysical reach, but must be handled efficiently.</li>
+          <li><strong>Forward direction:</strong> eccentric waveforms suitable for searches, not only for parameter estimation.</li>
+        </ul>
+      </div>
+      <aside class="aside">
+        <h3>Why eccentricity?</h3>
+        <p>
+          Some formation channels predict measurable eccentricity even around ~20 Hz, so eccentric searches can reveal
+          binaries that quasi-circular searches may miss.
+        </p>
+      </aside>
+    </section>
+
+    <section class="feature" style="margin-top: 1rem;">
+      <div>
+        <h3>2) Robust compact-binary population inference</h3>
+        <p>
+          Population analysis maps observed distributions (masses, spins, eccentricity, redshift) to astrophysical models.
+          A key part of my agenda is making this inference robust as catalogs expand and selection/systematics effects become
+          the limiting factor.
+        </p>
+        <ul>
+          <li>Re-estimating population properties when new events are added by advanced searches.</li>
+          <li>Quantifying robustness against waveform uncertainties, noise properties, and astrophysical priors.</li>
+          <li>Interpreting the “upper-mass-gap” and other unusual regions of parameter space.</li>
+        </ul>
+      </div>
+      <aside class="aside">
+        <h3>Methodology focus</h3>
+        <p>
+          Hierarchical modeling, careful selection effects, and cross-checks with alternate waveform and noise assumptions.
+        </p>
+      </aside>
+    </section>
+
+    <section class="feature" style="margin-top: 1rem;">
+      <div>
+        <h3>3) Precision tests of General Relativity with controlled systematics</h3>
+        <p>
+          My goal is to strengthen GR-testing frameworks so that they remain trustworthy in the era of hundreds of detections,
+          where small modeling omissions or detector non-stationarity can masquerade as new physics.
+        </p>
+        <ul>
+          <li>Theory-agnostic inspiral tests that can be extended to higher PN orders.</li>
+          <li>Extensions to include eccentricity and precession when needed.</li>
+          <li>Accounting for detector and astrophysical environmental effects (e.g., microlensing).</li>
+        </ul>
+      </div>
+      <aside class="aside">
+        <h3>CMI synergy</h3>
+        <p>
+          Strong connections to post-Newtonian theory and waveform developments enable sharper and more reliable tests.
+        </p>
+      </aside>
+    </section>
+
+    <section class="feature" style="margin-top: 1rem;">
+      <div>
+        <h3>4) Gravitational-wave lensing: dark matter, cosmology, and host-galaxy localization</h3>
+        <p>
+          Strong lensing can produce multiple GW signals from the same merger. Identifying these systems and combining GW
+          posteriors with deep imaging surveys opens a path to lens reconstruction, dark-matter halo probes, and precision
+          cosmology.
+        </p>
+        <ul>
+          <li>Catalog-level Bayesian identification of strongly lensed pairs.</li>
+          <li>Joint use of GW catalogs and lensing-survey catalogs to refine sky position and redshift.</li>
+          <li>Long-term goal: localize lensed events within the host galaxy (near lens caustics) for precision inference.</li>
+        </ul>
+      </div>
+      <aside class="aside">
+        <h3>Survey synergy</h3>
+        <p>
+          Wide-field lensing surveys (e.g., Euclid/LSST) can help identify the lens and source galaxies within the GW
+          localization region for candidate lensed events.
+        </p>
+      </aside>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h3>Collaborations & opportunities</h3>
+      <p>
+        Many of these projects are naturally collaborative—linking waveform modeling, searches, inference, and fundamental
+        physics. If you’re interested in student projects, postdoc collaborations, or joint proposals, feel free to reach out
+        via the <a href="contact.html">Contact</a> page.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <!-- Intentionally minimal (you previously wanted the © line removed). -->
+  </footer>
 
 </body>
 </html>
