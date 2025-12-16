@@ -419,4 +419,15 @@ section.profile-card .bio-container {
   font-weight: 600;
 }
 
+.inst{
+  font-weight: 600;
+  color: #4169E1;              /* RoyalBlue */
+  text-decoration: none;
+  border-bottom: 1px solid rgba(65,105,225,.35);
+}
+
+.inst:hover{
+  border-bottom-color: rgba(65,105,225,.9);
+}
+
 
