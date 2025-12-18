@@ -431,16 +431,7 @@ section.profile-card .bio-container {
 }
 
 .highlight{
-  font-weight: 500;
-  color: #1f2937;
-  background-image: linear-gradient(
-    to top,
-    rgba(65,105,225,0.18) 35%,
-    transparent 35%
-  );
-  background-size: 100% 1.2em;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  padding: 0 0.1em;
+  font-weight: 600;
+  color: #1f2937;   /* same text color, just stronger */
 }
 
