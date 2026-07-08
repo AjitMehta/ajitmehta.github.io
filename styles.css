@@ -674,5 +674,55 @@ nav a:hover {
 
     nav ul {
         gap: 0.9rem;
+
+
+       /* ===== UNIFORM HOME SECTION BACKGROUND ===== */
+
+.profile-card {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* Remove separate white cards */
+.profile-sidebar,
+.bio-container,
+.right-photo-column {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* Slightly reduce the feeling of boxed sections */
+.profile-sidebar {
+    padding-top: 0.5rem;
+}
+
+.bio-container {
+    padding-top: 0.5rem;
+}
+
+.right-photo-column {
+    padding-top: 0.5rem;
+}
+
+/* Keep only the actual images styled */
+.profile-photo {
+    border: 5px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
+
+.photo-credit img {
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
+
+/* Optional: make the contact button a little softer */
+.contact-button {
+    background: rgba(15, 23, 42, 0.88);
+}
+
+.contact-button:hover {
+    background: rgba(124, 58, 0, 0.9);
+}
     }
 }
