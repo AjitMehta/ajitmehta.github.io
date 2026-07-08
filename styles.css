@@ -1,3 +1,8 @@
+/* ============================================================
+   Ajit Kumar Mehta — Website Stylesheet
+   Cleaned and de-duplicated
+============================================================ */
+
 /* ================================
    RESET
 ================================== */
@@ -7,7 +12,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -16,14 +22,23 @@ html, body {
    BASE
 ================================== */
 body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(180deg, #f7f9fc, #e9eef5);
-    font-family: 'Inter', sans-serif;
-    color: #1a1a1a;
+  background: #f7f5f0;
+  font-family: "Inter", sans-serif;
+  color: #111827;
+  line-height: 1.65;
 }
 
-/* Limit width -- EXCLUDING the profile card */
+a {
+  color: #7b3f00;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Limit width for normal pages, but not the home profile section */
 header,
 section:not(.profile-card) {
   max-width: 960px;
@@ -36,26 +51,23 @@ section:not(.profile-card) {
    HEADER / HERO
 ================================== */
 header {
-  padding-top: 3rem;
-  padding-bottom: 2.5rem;
+  padding-top: 2.2rem;
+  padding-bottom: 1.4rem;
   text-align: center;
-  /* removed light text color so it doesn't fade */
-  /* color: #e5e7eb; */
 }
 
 header h1 {
   font-family: "Playfair Display", serif;
   font-size: 2.6rem;
-  letter-spacing: 0.04em;
-  margin: 0 0 0.3rem;
-  color: #111827; /* dark navy/black */
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem;
+  color: #111827;
 }
 
 header p {
   margin: 0.3rem 0 0;
   font-size: 1.05rem;
-  opacity: 1;              /* fully opaque */
-  color: #4b5563;          /* dark grey */
+  color: #4b5563;
 }
 
 /* ================================
@@ -67,39 +79,46 @@ nav {
 
 nav ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0.55rem 0.9rem;
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  background: rgba(15, 23, 42, 0.3);
-  padding: 0.55rem 0.9rem;
+  justify-content: center;
+  gap: 1.4rem;
+
+  background: rgba(15, 23, 42, 0.30);
   border-radius: 999px;
   backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
 nav a {
-  text-decoration: none;
-  color: #e5e7eb;
-  font-size: 0.9rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  display: inline-block;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  transition: 0.2s ease;
+
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 nav a:hover,
 nav a:focus {
-  background: #facc15;
+  background: rgba(250, 204, 21, 0.9);
   color: #1f2937;
+  text-decoration: none;
   transform: translateY(-1px);
 }
 
 /* ================================
    DEFAULT SECTION CARD
-   (EXCLUDES profile-card)
+   Used for Research, Publications, Talks, Contact, etc.
+   Excludes the home profile-card section.
 ================================== */
 section:not(.profile-card) {
   background: rgba(248, 250, 252, 0.96);
@@ -108,25 +127,27 @@ section:not(.profile-card) {
   margin-top: -1.2rem;
   margin-bottom: 3rem;
   box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.25),
+    0 18px 45px rgba(15, 23, 42, 0.18),
     0 0 0 1px rgba(148, 163, 184, 0.25);
 }
 
 section h2 {
   margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0f172a;
   font-size: 1.8rem;
   font-weight: 600;
-  color: #0f172a;
-  margin-bottom: 1rem;
 }
 
-/* Styled "Welcome!" heading */
-section h2.welcome-title {
+section h2.welcome-title,
+.welcome-title {
+  font-family: "Playfair Display", serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0f172a;
   padding-left: 0.8rem;
-  border-left: 4px solid #2563eb; /* blue */
+  border-left: 4px solid #2563eb;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
@@ -135,7 +156,6 @@ section p {
   color: #111827;
 }
 
-/* Lists */
 section ul,
 section ol {
   padding-left: 1.3rem;
@@ -147,162 +167,178 @@ section li {
   margin-bottom: 0.35rem;
 }
 
-/* ================================
-   LINKS
-================================== */
-a {
-  color: #2563eb;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ================================
-   RESPONSIVE GLOBAL
-================================== */
-@media (max-width: 640px) {
-  header,
-  section:not(.profile-card) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  header h1 {
-    font-size: 2.1rem;
-  }
-
-  section:not(.profile-card) {
-    padding: 1.7rem 1.4rem;
-    margin-top: -0.8rem;
-  }
-}
-
 /* ============================================================
-   PROFILE CARD LAYOUT — LEFT PHOTO, CENTER TEXT, RIGHT PHOTOS
+   HOME PAGE PROFILE LAYOUT
+   Three columns: profile / bio / figure
+   Uniform background: no separate white cards.
 =============================================================== */
 section.profile-card {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+  max-width: 1250px;
+  margin: 2rem auto 4rem;
+  padding: 2rem 2.4rem;
 
-  /* Remove default section styling */
-  background: transparent !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin-top: 2rem !important;
-  margin-bottom: 3rem !important;
-
-  /* Three-column layout */
-  display: flex !important;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;  /* push items to left, center, right */
+  display: grid;
+  grid-template-columns: 260px minmax(420px, 1fr) 330px;
   gap: 2rem;
-  padding: 2.4rem !important;
-  text-align: left !important;
+  align-items: start;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: left;
 }
 
-/* Left image column */
-section.profile-card .photo-container {
-  flex: 0 0 260px; /* fixed-ish width */
+/* Left profile column */
+.profile-sidebar,
+.photo-container {
+  text-align: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-section.profile-card .photo-container img {
-  width: 240px;
-  height: 240px;
+.profile-photo,
+.photo-container img {
+  width: 100%;
+  max-width: 210px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  display: block;
+  margin: 0 auto 1.2rem;
+
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
 }
 
-/* Text column (center) */
-section.profile-card .bio-container {
-  flex: 1;
-  max-width: 600px;
+.profile-details h2,
+.profile-info h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  margin: 0.3rem 0 0.7rem;
+  color: #111827;
+}
+
+.profile-position,
+.profile-title {
+  font-weight: 700;
+  margin: 0.2rem 0;
+  color: #333;
+}
+
+.profile-institute,
+.profile-affiliation {
+  margin: 0.25rem 0 1.1rem;
+  font-size: 0.95rem;
+}
+
+.profile-institute a,
+.profile-affiliation a {
+  color: #7b3f00;
+}
+
+.contact-button,
+.profile-contact a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.88);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.contact-button:hover,
+.profile-contact a:hover {
+  background: rgba(124, 58, 0, 0.9);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Center bio column */
+.bio-container {
+  max-width: 650px;
   min-width: 0;
+  padding: 0.5rem 0 0;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-/* Right-side stacked photos */
+.bio-container p {
+  margin: 0 0 1.05rem;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.bio-container a {
+  color: #7b3f00;
+  font-weight: 600;
+}
+
+/* Right figure column */
 .right-photo-column {
-  flex: 0 0 280px;            /* fixed width on the far right */
   display: flex;
-  flex-direction: column;     /* stack vertically */
-  align-items: flex-end;      /* align to the right edge */
+  flex-direction: column;
+  align-items: flex-end;
   gap: 1rem;
-}
 
-.right-photo-column img {
-  width: 260px;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-}
-
-/* Mobile layout */
-@media (max-width: 760px) {
-  section.profile-card {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 2rem 1.2rem !important;
-  }
-
-  section.profile-card .photo-container {
-    flex: 0 0 auto;
-  }
-
-  section.profile-card .photo-container img {
-    width: 200px;
-    height: 200px;
-  }
-
-  section.profile-card .bio-container {
-    max-width: 100%;
-  }
-
-  /* On mobile, arrange right-side photos in rows */
-  .right-photo-column {
-    flex: 0 0 auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .right-photo-column img {
-    width: 200px;
-    height: 200px;
-  }
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.5rem 0 0;
 }
 
 .photo-credit {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* keep text aligned with the image */
+  align-items: flex-end;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
+.photo-credit img,
+.right-photo-column img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+
+  border-radius: 16px;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
 
 .caption-text {
-    font-size: 0.9rem;
-    color: #374151; /* dark gray */
-    margin-top: 0.6rem;
-    line-height: 1.4;
-    text-align: left;   /* FIXED */
-    max-width: 260px;     /* keeps text tidy under image */
+  max-width: 300px;
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-align: left;
 }
 
-.caption-text .credit-text {
-    display: block;
-    font-size: 0.78rem;
-    color: #6b7280;
-    margin-top: 0.2rem;   /* ← VERY SMALL GAP */
+.caption-text .credit-text,
+.credit-text {
+  display: block;
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.78rem;
 }
 
 /* ================================
-   TALKS PAGE — Cards + layout
+   TALKS PAGE
 ================================== */
-
 .talks-intro {
   margin-bottom: 1.3rem;
   color: #374151;
@@ -318,9 +354,9 @@ section.profile-card .bio-container {
 .talks-section-title {
   margin-top: 1.7rem;
   margin-bottom: 0.6rem;
+  color: #0f172a;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #0f172a;
 }
 
 .talk-card {
@@ -340,16 +376,16 @@ section.profile-card .bio-container {
 }
 
 .talk-title {
-  font-weight: 700;
-  color: #4169E1; /* RoyalBlue */;
   margin: 0;
-  line-height: 1.25;
+  color: #4169e1;
   font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .talk-meta {
   margin-top: 0.35rem;
-  color: #0f172a; 
+  color: #0f172a;
   font-size: 0.95rem;
   line-height: 1.35;
 }
@@ -360,369 +396,167 @@ section.profile-card .bio-container {
   gap: 0.35rem;
   padding: 0.22rem 0.55rem;
   border-radius: 999px;
+
+  background: rgba(37, 99, 235, 0.10);
+  border: 1px solid rgba(37, 99, 235, 0.20);
+  color: #1d4ed8;
+
   font-size: 0.78rem;
   letter-spacing: 0.02em;
-  background: rgba(37, 99, 235, 0.10);
-  color: #1d4ed8;
-  border: 1px solid rgba(37, 99, 235, 0.20);
   white-space: nowrap;
 }
 
 .badge.secondary {
   background: rgba(15, 23, 42, 0.06);
-  color: #0f172a;
   border: 1px solid rgba(15, 23, 42, 0.10);
+  color: #0f172a;
 }
 
 .talk-divider {
   height: 1px;
-  background: rgba(148, 163, 184, 0.35);
   margin: 1.4rem 0 0.7rem;
+  background: rgba(148, 163, 184, 0.35);
 }
 
+.year {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.talk-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.talk-list li {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.talk-list .meta {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ================================
+   REUSABLE INLINE STYLES
+================================== */
+.inst {
+  color: #4169e1;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.35);
+}
+
+.inst:hover {
+  border-bottom-color: rgba(65, 105, 225, 0.9);
+  text-decoration: none;
+}
+
+.highlight {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* ================================
+   RESPONSIVE LAYOUT
+================================== */
 @media (min-width: 880px) {
   .talks-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .talk-card {
-    padding: 1rem 1rem;
+@media (max-width: 1050px) {
+  section.profile-card {
+    grid-template-columns: 240px 1fr;
+  }
+
+  .right-photo-column {
+    grid-column: 1 / -1;
+    align-items: center;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .photo-credit {
+    align-items: center;
+  }
+
+  .caption-text {
+    max-width: 650px;
   }
 }
 
-.year {
-    margin-top: 2.5rem;
-    font-size: 1.4rem;
-    font-weight: 600;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.3rem;
-}
-
-.talk-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.talk-list li {
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
-}
-
-.talk-list .meta {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.inst{
-  font-weight: 600;
-}
-
-.inst{
-  font-weight: 600;
-  color: #4169E1;              /* RoyalBlue */
-  text-decoration: none;
-  border-bottom: 1px solid rgba(65,105,225,.35);
-}
-
-.inst:hover{
-  border-bottom-color: rgba(65,105,225,.9);
-}
-
-.highlight{
-  font-weight: 600;
-  color: #1f2937;   /* same text color, just stronger */
-}
-
-.profile-info {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.profile-title {
-    font-weight: 600;
-    margin: 0.3rem 0;
-}
-
-.profile-affiliation {
-    margin: 0.3rem 0;
-}
-
-.profile-contact {
-    margin-top: 0.7rem;
-}
-
-.profile-contact a {
-    font-weight: 500;
-    text-decoration: none;
-}
-
-/* ===== POLISHED HOME PAGE LAYOUT ===== */
-
-body {
-    font-family: "Inter", sans-serif;
-    background: #f7f5f0;
-    color: #222;
-    line-height: 1.65;
-}
-
-/* Header */
-header {
-    text-align: center;
-    padding: 2.2rem 1rem 1.4rem;
-}
-
-header h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 2.6rem;
-    margin: 0 0 1rem;
-    letter-spacing: 0.02em;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.4rem;
-    flex-wrap: wrap;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-nav a:hover {
-    color: #7b3f00;
-}
-
-/* Main three-column card */
-.profile-card {
-    max-width: 1250px;
-    margin: 2rem auto 4rem;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 260px minmax(420px, 1fr) 330px;
-    gap: 2rem;
-    align-items: start;
-}
-
-/* Left profile sidebar */
-.profile-sidebar {
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 1.4rem;
-    text-align: center;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.profile-photo {
-    width: 100%;
-    max-width: 210px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 1.2rem;
-    border: 4px solid #f1e8dc;
-}
-
-.profile-details h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.35rem;
-    margin: 0.3rem 0 0.7rem;
-}
-
-.profile-position {
-    font-weight: 600;
-    margin: 0.2rem 0;
-    color: #333;
-}
-
-.profile-institute {
-    margin: 0.25rem 0 1.1rem;
-    font-size: 0.95rem;
-}
-
-.profile-institute a {
-    color: #7b3f00;
-    text-decoration: none;
-}
-
-.profile-institute a:hover {
-    text-decoration: underline;
-}
-
-.contact-button {
-    display: inline-block;
-    margin-top: 0.4rem;
-    padding: 0.65rem 1.15rem;
-    border-radius: 999px;
-    background: #222;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.92rem;
-    transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.contact-button:hover {
-    background: #7b3f00;
-    transform: translateY(-1px);
-}
-
-/* Center biography */
-.bio-container {
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 2rem 2.2rem;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.welcome-title {
-    font-family: "Playfair Display", serif;
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-.bio-container p {
-    margin: 0 0 1.05rem;
-    font-size: 1rem;
-}
-
-.bio-container a {
-    color: #7b3f00;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.bio-container a:hover {
-    text-decoration: underline;
-}
-
-/* Right photo card */
-.right-photo-column {
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 1rem;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.photo-credit img {
-    width: 100%;
-    display: block;
-    border-radius: 16px;
-    margin-bottom: 0.9rem;
-}
-
-.caption-text {
-    font-size: 0.82rem;
-    line-height: 1.45;
-    color: #555;
-    margin: 0;
-}
-
-.credit-text {
-    display: block;
-    margin-top: 0.55rem;
-    color: #777;
-    font-size: 0.78rem;
-}
-
-/* Responsive layout */
-@media (max-width: 1050px) {
-    .profile-card {
-        grid-template-columns: 240px 1fr;
-    }
-
-    .right-photo-column {
-        grid-column: 1 / -1;
-        max-width: 650px;
-        margin: 0 auto;
-    }
-}
-
 @media (max-width: 760px) {
-    .profile-card {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-        margin-top: 1rem;
-    }
+  section.profile-card {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
 
-    .profile-sidebar,
-    .bio-container,
-    .right-photo-column {
-        padding: 1.3rem;
-    }
+  .bio-container {
+    max-width: 100%;
+    text-align: left;
+  }
 
-    header h1 {
-        font-size: 2.1rem;
-    }
+  .profile-sidebar,
+  .photo-container,
+  .right-photo-column,
+  .photo-credit {
+    align-items: center;
+  }
 
-    .welcome-title {
-        font-size: 1.75rem;
-    }
+  .right-photo-column {
+    flex-direction: column;
+  }
 
-    nav ul {
-        gap: 0.9rem;
+  .profile-photo,
+  .photo-container img {
+    max-width: 200px;
+  }
 
+  .photo-credit img,
+  .right-photo-column img {
+    max-width: 300px;
+  }
 
-       /* ===== UNIFORM HOME SECTION BACKGROUND ===== */
-
-.profile-card {
-    background: transparent;
-    box-shadow: none;
-    border: none;
+  .welcome-title {
+    font-size: 1.75rem;
+  }
 }
 
-/* Remove separate white cards */
-.profile-sidebar,
-.bio-container,
-.right-photo-column {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-}
+@media (max-width: 640px) {
+  header,
+  section:not(.profile-card) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
-/* Slightly reduce the feeling of boxed sections */
-.profile-sidebar {
-    padding-top: 0.5rem;
-}
+  header h1 {
+    font-size: 2.1rem;
+  }
 
-.bio-container {
-    padding-top: 0.5rem;
-}
+  nav ul {
+    gap: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
 
-.right-photo-column {
-    padding-top: 0.5rem;
-}
+  nav a {
+    font-size: 0.82rem;
+    padding: 0.3rem 0.55rem;
+  }
 
-/* Keep only the actual images styled */
-.profile-photo {
-    border: 5px solid rgba(255, 255, 255, 0.75);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
-}
+  section:not(.profile-card) {
+    padding: 1.7rem 1.4rem;
+    margin-top: -0.8rem;
+  }
 
-.photo-credit img {
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
-}
-
-/* Optional: make the contact button a little softer */
-.contact-button {
-    background: rgba(15, 23, 42, 0.88);
-}
-
-.contact-button:hover {
-    background: rgba(124, 58, 0, 0.9);
-}
-    }
+  .talk-card {
+    padding: 1rem;
+  }
 }
