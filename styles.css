@@ -560,8 +560,9 @@ section.profile-card {
   }
 }
 
-/* ===== FULLY UNBOXED PUBLICATIONS AND TALKS ===== */
+/* ===== REMOVE BOXES FROM PUBLICATIONS AND TALKS ===== */
 
+/* Publication entries */
 .publication-card,
 .publication-item,
 .pub-card,
@@ -569,12 +570,34 @@ section.profile-card {
 .paper-card,
 .paper-item,
 .publications-list li,
-.publication-list li,
+.publication-list li {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1rem 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Optional subtle separator between publications */
+.publication-card,
+.publication-item,
+.pub-card,
+.pub-item,
+.paper-card,
+.paper-item,
+.publications-list li,
+.publication-list li {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Talks entries */
 .talk-card {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0.8rem 0 !important;
+  padding: 1rem 0 !important;
   margin-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
 }
