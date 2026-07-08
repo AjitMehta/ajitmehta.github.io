@@ -820,21 +820,21 @@ nav ul {
   align-items: center;
   gap: 1.35rem;
 
-  padding: 0.72rem 1.25rem;
+  padding: 0.55rem 1.15rem;
   margin: 0;
 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.72),
-    rgba(226, 232, 240, 0.58)
+    rgba(245, 245, 245, 0.78),
+    rgba(220, 224, 230, 0.62)
   ) !important;
 
   border: 1px solid rgba(15, 23, 42, 0.08) !important;
   border-radius: 999px !important;
 
   box-shadow:
-    0 16px 35px rgba(15, 23, 42, 0.13),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+    0 12px 28px rgba(15, 23, 42, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.70) !important;
 
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
@@ -847,7 +847,7 @@ nav a {
   border-bottom: none !important;
 
   color: #2f2f32 !important;
-  padding: 0.38rem 0.72rem;
+  padding: 0.32rem 0.68rem;
 
   transition:
     background 0.18s ease,
@@ -858,8 +858,8 @@ nav a {
 nav a:hover,
 nav a:focus,
 nav a.active {
-  background: rgba(123, 63, 0, 0.11) !important;
-  color: #7b3f00 !important;
+  background: rgba(65, 105, 225, 0.10) !important;
+  color: #1f3f9a !important;
   text-decoration: none !important;
   border-bottom: none !important;
   transform: translateY(-1px);
