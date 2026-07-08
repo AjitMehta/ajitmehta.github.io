@@ -435,3 +435,25 @@ section.profile-card .bio-container {
   color: #1f2937;   /* same text color, just stronger */
 }
 
+.profile-info {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.profile-title {
+    font-weight: 600;
+    margin: 0.3rem 0;
+}
+
+.profile-affiliation {
+    margin: 0.3rem 0;
+}
+
+.profile-contact {
+    margin-top: 0.7rem;
+}
+
+.profile-contact a {
+    font-weight: 500;
+    text-decoration: none;
+}
