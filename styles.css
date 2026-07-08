@@ -1,6 +1,7 @@
 /* ============================================================
    Ajit Kumar Mehta — Website Stylesheet
    Cleaned and de-duplicated
+   Version with uniform background and fixed publication numbering
 ============================================================ */
 
 /* ================================
@@ -116,16 +117,15 @@ nav a:focus {
 }
 
 /* ================================
-   DEFAULT SECTION CARD
-   Used for Research, Publications, Talks, Contact, etc.
-   Excludes the home profile-card section.
+   DEFAULT SECTIONS
+   Uniform background: no large page cards.
 ================================== */
 section:not(.profile-card) {
   background: transparent;
   border-radius: 0;
   padding: 2.2rem 2.4rem;
   margin-top: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   box-shadow: none;
   border: none;
 }
@@ -335,36 +335,155 @@ section.profile-card {
   font-size: 0.78rem;
 }
 
-/* ================================
+/* ============================================================
+   PUBLICATIONS PAGE
+   Unboxed entries, fixed numbering, very small subsection gaps.
+=============================================================== */
+
+/* External profile buttons near top of publications page */
+.pub-links,
+.profile-links,
+.external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0.8rem 0 1.2rem;
+}
+
+/* Subsection headings such as "Refereed publications" and "Preprints on arXiv" */
+section h3,
+.publications h3,
+.publication-section-title,
+.pub-section-title {
+  margin-top: 1.1rem !important;
+  margin-bottom: 0.45rem !important;
+  color: #4169e1;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+/* If a publication list is followed by another subsection title, keep the gap small. */
+.pub-list + h3,
+.publication-list + h3,
+.publications-list + h3,
+ol.pub-list + h3,
+ol.publication-list + h3,
+ol.publications-list + h3,
+ol + h3 {
+  margin-top: 1.0rem !important;
+}
+
+/* Publication ordered lists.
+   We use CSS counters instead of native markers to prevent overlap/misalignment. */
+ol.pub-list,
+ol.publication-list,
+ol.publications-list,
+section.publications ol,
+body:not(.home) section ol {
+  list-style: none !important;
+  counter-reset: pub-counter;
+  padding-left: 0 !important;
+  margin-top: 0.35rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Publication entries */
+ol.pub-list > li,
+ol.publication-list > li,
+ol.publications-list > li,
+section.publications ol > li,
+body:not(.home) section ol > li {
+  counter-increment: pub-counter;
+  position: relative;
+  display: block !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  padding: 0.35rem 0 0.85rem 3.1rem !important;
+  margin: 0 0 0.65rem 0 !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Artificial number label */
+ol.pub-list > li::before,
+ol.publication-list > li::before,
+ol.publications-list > li::before,
+section.publications ol > li::before,
+body:not(.home) section ol > li::before {
+  content: counter(pub-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 2.2rem;
+  text-align: right;
+  color: #4169e1;
+  font-weight: 700;
+}
+
+/* Remove any accidental native marker */
+ol.pub-list > li::marker,
+ol.publication-list > li::marker,
+ol.publications-list > li::marker,
+section.publications ol > li::marker,
+body:not(.home) section ol > li::marker {
+  content: "";
+}
+
+/* Publication title links */
+ol.pub-list > li a:first-child,
+ol.publication-list > li a:first-child,
+ol.publications-list > li a:first-child,
+section.publications ol > li a:first-child,
+body:not(.home) section ol > li a:first-child {
+  display: inline;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Make paragraph spacing inside publication items compact */
+ol.pub-list > li p,
+ol.publication-list > li p,
+ol.publications-list > li p,
+section.publications ol > li p,
+body:not(.home) section ol > li p {
+  margin: 0.25rem 0 !important;
+}
+
+/* ============================================================
    TALKS PAGE
-================================== */
+   Unboxed entries.
+=============================================================== */
 .talks-intro {
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.0rem;
   color: #374151;
 }
 
 .talks-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 0.6rem;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
 }
 
 .talks-section-title {
-  margin-top: 1.7rem;
-  margin-bottom: 0.6rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.4rem;
   color: #0f172a;
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .talk-card {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 16px;
-  padding: 1.1rem 1.2rem;
-  box-shadow:
-    0 10px 28px rgba(15, 23, 42, 0.12),
-    0 0 0 1px rgba(148, 163, 184, 0.22);
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0.45rem 0 0.75rem !important;
+  margin-bottom: 0.55rem !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
 }
 
 .talk-top {
@@ -383,7 +502,7 @@ section.profile-card {
 }
 
 .talk-meta {
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   color: #0f172a;
   font-size: 0.95rem;
   line-height: 1.35;
@@ -413,13 +532,13 @@ section.profile-card {
 
 .talk-divider {
   height: 1px;
-  margin: 1.4rem 0 0.7rem;
+  margin: 0.9rem 0 0.45rem;
   background: rgba(148, 163, 184, 0.35);
 }
 
 .year {
-  margin-top: 2.5rem;
-  padding-bottom: 0.3rem;
+  margin-top: 1.1rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid #ddd;
   font-size: 1.4rem;
   font-weight: 600;
@@ -431,7 +550,7 @@ section.profile-card {
 }
 
 .talk-list li {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.75rem;
   line-height: 1.6;
 }
 
@@ -551,89 +670,11 @@ section.profile-card {
   }
 
   section:not(.profile-card) {
-    padding: 1.7rem 1.4rem;
-    margin-top: -0.8rem;
+    padding: 1.4rem 1rem;
+    margin-top: -0.4rem;
   }
 
   .talk-card {
-    padding: 1rem;
+    padding: 0.45rem 0 0.75rem !important;
   }
-}
-
-/* ===== CLEAN UNBOXED PUBLICATIONS ===== */
-
-ol,
-.publication-list,
-.publications-list,
-.pub-list {
-  padding-left: 2.2rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-ol > li,
-.publication-list > li,
-.publications-list > li,
-.pub-list > li {
-  display: list-item;
-  list-style-position: outside;
-
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-
-  padding: 0 0 1.2rem 0 !important;
-  margin-bottom: 1.2rem !important;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
-}
-
-ol > li::marker,
-.publication-list > li::marker,
-.publications-list > li::marker,
-.pub-list > li::marker {
-  color: #4169e1;
-  font-weight: 700;
-}
-
-/* Keep publication title aligned properly */
-ol > li a:first-child,
-.publication-list > li a:first-child,
-.publications-list > li a:first-child,
-.pub-list > li a:first-child {
-  display: inline;
-}
-
-/* ===== REDUCE PUBLICATION SECTION GAPS ===== */
-
-.publications h2,
-.publications h3,
-section h3,
-section h4 {
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
-}
-
-/* Specifically reduce gap before headings like "Preprints on arXiv" */
-ol + h2,
-ol + h3,
-ol + h4,
-.publication-list + h2,
-.publication-list + h3,
-.publication-list + h4,
-.publications-list + h2,
-.publications-list + h3,
-.publications-list + h4,
-.pub-list + h2,
-.pub-list + h3,
-.pub-list + h4 {
-  margin-top: 2rem !important;
-}
-
-/* Reduce extra bottom space after publication lists */
-ol,
-.publication-list,
-.publications-list,
-.pub-list {
-  margin-bottom: 1.5rem !important;
 }
