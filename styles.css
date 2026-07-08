@@ -560,44 +560,58 @@ section.profile-card {
   }
 }
 
-/* ===== REMOVE BOXES FROM PUBLICATIONS AND TALKS ===== */
+/* ===== FULLY UNBOX PUBLICATIONS AND TALKS ===== */
 
-/* Publication entries */
-.publication-card,
-.publication-item,
-.pub-card,
-.pub-item,
-.paper-card,
-.paper-item,
+/* Remove card styling from publication entries */
+section ol > li,
+section ul.publications > li,
+section ol.publications > li,
+.publications li,
+.publication-list li,
 .publications-list li,
-.publication-list li {
+.pub-list li,
+.pub-entry,
+.publication-entry,
+.publication-item,
+.publication-card,
+.paper-entry,
+.paper-item,
+.paper-card,
+.pub-card {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 1rem 0 !important;
+  padding: 0.8rem 0 !important;
   margin-bottom: 1rem !important;
 }
 
-/* Optional subtle separator between publications */
-.publication-card,
-.publication-item,
-.pub-card,
-.pub-item,
-.paper-card,
-.paper-item,
-.publications-list li,
-.publication-list li {
-  border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
-}
-
-/* Talks entries */
-.talk-card {
+/* Remove card styling from talk entries */
+.talk-card,
+.talk-list li,
+.talks-grid > div {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 1rem 0 !important;
+  padding: 0.8rem 0 !important;
   margin-bottom: 1rem !important;
+}
+
+/* Optional: keep entries readable with only a thin separator */
+section ol > li,
+section ul.publications > li,
+section ol.publications > li,
+.publications li,
+.publication-list li,
+.publications-list li,
+.pub-list li,
+.pub-entry,
+.publication-entry,
+.publication-item,
+.paper-entry,
+.paper-item,
+.talk-card,
+.talk-list li {
   border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
 }
