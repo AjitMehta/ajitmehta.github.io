@@ -560,58 +560,80 @@ section.profile-card {
   }
 }
 
-/* ===== FULLY UNBOX PUBLICATIONS AND TALKS ===== */
+/* ===== CLEAN UNBOXED PUBLICATIONS ===== */
 
-/* Remove card styling from publication entries */
-section ol > li,
-section ul.publications > li,
-section ol.publications > li,
-.publications li,
-.publication-list li,
-.publications-list li,
-.pub-list li,
-.pub-entry,
-.publication-entry,
-.publication-item,
-.publication-card,
-.paper-entry,
-.paper-item,
-.paper-card,
-.pub-card {
+ol,
+.publication-list,
+.publications-list,
+.pub-list {
+  padding-left: 2.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+ol > li,
+.publication-list > li,
+.publications-list > li,
+.pub-list > li {
+  display: list-item;
+  list-style-position: outside;
+
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0.8rem 0 !important;
-  margin-bottom: 1rem !important;
-}
 
-/* Remove card styling from talk entries */
-.talk-card,
-.talk-list li,
-.talks-grid > div {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0.8rem 0 !important;
-  margin-bottom: 1rem !important;
-}
-
-/* Optional: keep entries readable with only a thin separator */
-section ol > li,
-section ul.publications > li,
-section ol.publications > li,
-.publications li,
-.publication-list li,
-.publications-list li,
-.pub-list li,
-.pub-entry,
-.publication-entry,
-.publication-item,
-.paper-entry,
-.paper-item,
-.talk-card,
-.talk-list li {
+  padding: 0 0 1.2rem 0 !important;
+  margin-bottom: 1.2rem !important;
   border-bottom: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+ol > li::marker,
+.publication-list > li::marker,
+.publications-list > li::marker,
+.pub-list > li::marker {
+  color: #4169e1;
+  font-weight: 700;
+}
+
+/* Keep publication title aligned properly */
+ol > li a:first-child,
+.publication-list > li a:first-child,
+.publications-list > li a:first-child,
+.pub-list > li a:first-child {
+  display: inline;
+}
+
+/* ===== REDUCE PUBLICATION SECTION GAPS ===== */
+
+.publications h2,
+.publications h3,
+section h3,
+section h4 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Specifically reduce gap before headings like "Preprints on arXiv" */
+ol + h2,
+ol + h3,
+ol + h4,
+.publication-list + h2,
+.publication-list + h3,
+.publication-list + h4,
+.publications-list + h2,
+.publications-list + h3,
+.publications-list + h4,
+.pub-list + h2,
+.pub-list + h3,
+.pub-list + h4 {
+  margin-top: 2rem !important;
+}
+
+/* Reduce extra bottom space after publication lists */
+ol,
+.publication-list,
+.publications-list,
+.pub-list {
+  margin-bottom: 1.5rem !important;
 }
