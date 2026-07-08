@@ -559,3 +559,22 @@ section.profile-card {
     padding: 1rem;
   }
 }
+
+/* ===== FULLY UNBOXED PUBLICATIONS AND TALKS ===== */
+
+.publication-card,
+.publication-item,
+.pub-card,
+.pub-item,
+.paper-card,
+.paper-item,
+.publications-list li,
+.publication-list li,
+.talk-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0.8rem 0 !important;
+  margin-bottom: 1rem !important;
+}
