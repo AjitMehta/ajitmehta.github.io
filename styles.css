@@ -878,10 +878,5 @@ nav a.active {
 
 html,
 body {
-  min-height: 100%;
-  margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(120, 92, 65, 0.22), transparent 46%),
-    linear-gradient(180deg, #ded7cc 0%, #bfb5a7 100%) !important;
+  background: gray !important;
 }
