@@ -877,5 +877,5 @@ nav a.active {
 /* TEST: force visible background */
 html,
 body {
-  background: #b8afa1 !important;
+  background: red !important;
 }
