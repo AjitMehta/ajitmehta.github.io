@@ -26,7 +26,8 @@ body {
    BASE
 ================================== */
 body {
-  background: linear-gradient(180deg, #eeeeee 0%, #dddddd 100%);
+  radial-gradient(circle at top left, rgba(255, 255, 255, 0.65), transparent 35%),
+    linear-gradient(180deg, #eeeeec 0%, #dededb 100%);
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #111827;
   line-height: 1.65;
