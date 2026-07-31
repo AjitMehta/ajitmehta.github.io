@@ -888,3 +888,17 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
 }
+.talk-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.talk-title {
+  margin: 0;
+}
+
+.talk-meta {
+  margin-top: 0.6rem;
+}
