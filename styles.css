@@ -888,17 +888,48 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
 }
-.talk-top {
+
+.talk-card {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.7rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.8rem;
+  row-gap: 0.4rem;
 }
 
+.talk-top {
+  display: contents;
+}
+
+/* Talk title always occupies the first row */
 .talk-title {
+  flex: 0 0 100%;
   margin: 0;
 }
 
+/* Event or occasion: ordinary text, but italic */
+.talk-card .badge {
+  flex: 0 1 auto;
+
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+
+  color: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  font-style: italic;
+  line-height: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+}
+
+/* Location and date beside it */
 .talk-meta {
-  margin-top: 0.6rem;
+  flex: 1 1 20rem;
+  margin: 0;
 }
