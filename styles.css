@@ -879,9 +879,14 @@ nav a.active {
 html,
 body {
   background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(180, 170, 145, 0.18), transparent 45%),
-    linear-gradient(180deg, #e8e4dc 0%, #d3ccc0 100%) !important;
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.55),
+      transparent 35%
+    ),
+    #e8e4dc !important;
+
+  background-attachment: fixed;
 }
 
 .talks-grid {
