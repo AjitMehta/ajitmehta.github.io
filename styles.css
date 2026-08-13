@@ -608,8 +608,8 @@ ol.publications-list > li::marker,
   margin: 0;
   color: #4169e1;
   font-size: 1.02rem;
-  font-weight: 650;
-  line-height: 1.35;
+  font-weight: 750;
+  line-height: 1.25;
 }
 
 .talk-meta {
@@ -910,7 +910,6 @@ body {
 .talk-title {
   flex: 0 0 100%;
   margin: 0;
-  color: black;
 }
 
 /* Event or occasion: ordinary text, but italic */
