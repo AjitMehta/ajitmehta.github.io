@@ -909,7 +909,11 @@ body {
 /* Talk title always occupies the first row */
 .talk-title {
   flex: 0 0 100%;
-  margin: 0;
+  margin: 0 !important;
+  color: #0f172a;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  font-weight: 650;
 }
 
 /* Event or occasion: ordinary text, but italic */
