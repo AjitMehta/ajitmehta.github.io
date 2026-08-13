@@ -608,8 +608,8 @@ ol.publications-list > li::marker,
   margin: 0;
   color: #4169e1;
   font-size: 1.02rem;
-  font-weight: 700;
-  line-height: 1.25;
+  font-weight: 650;
+  line-height: 1.35;
 }
 
 .talk-meta {
