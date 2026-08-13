@@ -910,6 +910,7 @@ body {
 .talk-title {
   flex: 0 0 100%;
   margin: 0;
+  color: black;
 }
 
 /* Event or occasion: ordinary text, but italic */
