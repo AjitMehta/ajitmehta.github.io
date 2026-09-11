@@ -18,13 +18,8 @@
     /* New controls only. The site's existing styles.css remains in charge of
        the page header, navigation, typography, spacing, and publication list. */
     .publication-filter {
-      margin: 1.25rem 0 2.25rem;
-    }
-
-    .filter-label {
-      margin: 0 0 0.7rem;
-      font-size: 0.9rem;
-      font-weight: 600;
+      margin: 1.25rem 0 0.8rem;
+      padding-block: 0;
     }
 
     .filter-options {
@@ -61,14 +56,14 @@
       outline-offset: 2px;
     }
 
-    .filter-summary {
-      margin: 0.65rem 0 0;
-      opacity: 0.68;
-      font-size: 0.85rem;
+    .main-publications {
+      margin: 0 0 3rem;
+      padding-block: 0;
     }
 
-    .main-publications {
-      margin-bottom: 3rem;
+    .main-publications > .pub-list {
+      margin-top: 0;
+      padding-top: 0;
     }
 
     .lsc-section {
@@ -129,8 +124,9 @@
       </a>
     </div>
 
+    
 
-    <section class="publication-filter" aria-labelledby="filter-label">
+    <div class="publication-filter" aria-label="Filter publications by research topic">
       <div class="filter-options" role="group" aria-label="Publication topic filters">
         <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter-button" type="button" data-filter="searches" aria-pressed="false">Searches</button>
@@ -140,9 +136,9 @@
         <button class="filter-button" type="button" data-filter="populations" aria-pressed="false">Populations &amp; Astrophysics</button>
         <button class="filter-button" type="button" data-filter="inference" aria-pressed="false">Inference &amp; Methods</button>
       </div>
-    </section>
+    </div>
 
-    <section class="main-publications" aria-label="Main publications">
+    <div class="main-publications" aria-label="Main publications">
       <ol class="pub-list">
 <li class="pub" data-topics="populations inference" data-status="preprint">
           <p class="pub-title">
@@ -550,7 +546,7 @@
           </p>
         </li>
       </ol>
-    </section>
+    </div>
 
     <section class="lsc-section" aria-labelledby="lsc">
       <h3 class="lsc-heading" id="lsc">LIGO Scientific Collaboration papers with significant contribution</h3>
@@ -607,7 +603,6 @@
       const buttons = [...document.querySelectorAll('.filter-button')];
       const publications = [...document.querySelectorAll('.pub[data-topics]')];
       const lscSection = document.querySelector('.lsc-section');
-      const count = document.getElementById('visible-count');
       const empty = document.getElementById('no-results');
 
       function applyFilter(topic) {
@@ -631,7 +626,6 @@
           button.setAttribute('aria-pressed', String(active));
         });
 
-        count.textContent = String(visible);
         empty.hidden = visible !== 0;
       }
 
