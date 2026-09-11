@@ -18,7 +18,7 @@
     /* New controls only. The site's existing styles.css remains in charge of
        the page header, navigation, typography, spacing, and publication list. */
     .publication-filter {
-      margin: 1.25rem 0 1.5rem;
+      margin: 1.25rem 0 1.5em;
       padding-block: 0;
     }
 
@@ -129,12 +129,11 @@
     <div class="publication-filter" aria-label="Filter publications by research topic">
       <div class="filter-options" role="group" aria-label="Publication topic filters">
         <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-button" type="button" data-filter="searches" aria-pressed="false">Searches</button>
+        <button class="filter-button" type="button" data-filter="analysis" aria-pressed="false">Searches &amp; Inference</button>
         <button class="filter-button" type="button" data-filter="waveforms" aria-pressed="false">Waveform Modeling</button>
         <button class="filter-button" type="button" data-filter="tests-gr" aria-pressed="false">Tests of GR</button>
         <button class="filter-button" type="button" data-filter="lensing" aria-pressed="false">Gravitational Lensing</button>
         <button class="filter-button" type="button" data-filter="populations" aria-pressed="false">Populations &amp; Astrophysics</button>
-        <button class="filter-button" type="button" data-filter="inference" aria-pressed="false">Inference &amp; Methods</button>
       </div>
     </div>
 
@@ -610,7 +609,9 @@
 
         publications.forEach((publication) => {
           const topics = publication.dataset.topics.split(/\s+/);
-          const matches = topic === 'all' || topics.includes(topic);
+          const matches = topic === 'all'
+            || (topic === 'analysis' && (topics.includes('searches') || topics.includes('inference')))
+            || topics.includes(topic);
           publication.hidden = !matches;
           if (matches) visible += 1;
         });
