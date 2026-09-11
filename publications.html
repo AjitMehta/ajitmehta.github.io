@@ -13,10 +13,333 @@
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Page-scoped polish (works with/without styles.css) -->
+
+  <style>
+    :root {
+      --pub-ink: #17243a;
+      --pub-muted: #5f6c7b;
+      --pub-accent: #176b70;
+      --pub-accent-dark: #0f5358;
+      --pub-line: #dbe3e8;
+      --pub-surface: #ffffff;
+      --pub-soft: #eef5f5;
+      --pub-page: #f7f9fa;
+      --pub-shadow: 0 8px 24px rgba(23, 36, 58, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    body.publications-page {
+      margin: 0;
+      color: var(--pub-ink);
+      background: var(--pub-page);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .publications-page .container {
+      width: min(1080px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .publications-page header {
+      color: #fff;
+      background: #14243b;
+      border-bottom: 3px solid var(--pub-accent);
+    }
+
+    .publications-page header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 78px;
+    }
+
+    .publications-page header h1 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    .publications-page nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .publications-page nav a {
+      color: #dce7ee;
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    .publications-page nav a:hover,
+    .publications-page nav a:focus-visible,
+    .publications-page nav a.active {
+      color: #fff;
+    }
+
+    .publications-page nav a.active {
+      padding-bottom: 5px;
+      border-bottom: 2px solid #63c2c2;
+    }
+
+    .publications-page main { padding-block: 48px 72px; }
+
+    .publications-page .page-title h2 {
+      margin: 0 0 14px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .publications-page .linkbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .publications-page .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 7px 13px;
+      color: var(--pub-ink);
+      background: var(--pub-surface);
+      border: 1px solid var(--pub-line);
+      border-radius: 999px;
+      box-shadow: 0 2px 10px rgba(23, 36, 58, 0.04);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .publications-page .pill:hover,
+    .publications-page .pill:focus-visible {
+      color: var(--pub-accent-dark);
+      border-color: #96bfc1;
+    }
+
+    .publications-page .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--pub-accent);
+      border-radius: 50%;
+    }
+
+    .publication-filter {
+      margin: 0 0 42px;
+      padding: 20px;
+      background: var(--pub-surface);
+      border: 1px solid var(--pub-line);
+      border-radius: 14px;
+      box-shadow: var(--pub-shadow);
+    }
+
+    .filter-label {
+      margin: 0 0 11px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .filter-button {
+      min-height: 40px;
+      padding: 8px 14px;
+      color: var(--pub-ink);
+      background: #fff;
+      border: 1px solid #cbd6dc;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+    }
+
+    .filter-button:hover { border-color: var(--pub-accent); }
+    .filter-button:active { transform: translateY(1px); }
+    .filter-button.is-active {
+      color: #fff;
+      background: var(--pub-accent);
+      border-color: var(--pub-accent);
+    }
+
+    .filter-button:focus-visible,
+    .publications-page a:focus-visible {
+      outline: 3px solid rgba(23, 107, 112, 0.28);
+      outline-offset: 3px;
+    }
+
+    .filter-summary {
+      margin: 12px 0 0;
+      color: var(--pub-muted);
+      font-size: 0.85rem;
+    }
+
+    .year-group { margin-bottom: 42px; }
+
+    .year-heading,
+    .lsc-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 16px;
+      color: var(--pub-ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.55rem;
+      line-height: 1.25;
+    }
+
+    .year-heading::after,
+    .lsc-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--pub-line);
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pub {
+      position: relative;
+      padding: 20px 22px 19px 27px;
+      background: var(--pub-surface);
+      border: 1px solid var(--pub-line);
+      border-radius: 10px;
+      box-shadow: 0 3px 14px rgba(23, 36, 58, 0.035);
+    }
+
+    .pub::before {
+      content: "";
+      position: absolute;
+      inset: 17px auto 17px 0;
+      width: 4px;
+      background: var(--pub-accent);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .pub[hidden],
+    .year-group[hidden],
+    .lsc-section[hidden] { display: none !important; }
+
+    .pub p { margin: 0; }
+
+    .pub-title {
+      margin-bottom: 7px !important;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.42;
+    }
+
+    .pub-title a {
+      color: var(--pub-ink);
+      text-decoration: none;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .pub-title a:hover,
+    .pub-title a:focus-visible {
+      color: var(--pub-accent-dark);
+      text-decoration: underline;
+    }
+
+    .pub-authors {
+      color: #38485b;
+      font-size: 0.91rem;
+      line-height: 1.55;
+    }
+
+    .pub-venue {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px !important;
+      color: var(--pub-muted);
+      font-size: 0.88rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      color: #28585a;
+      background: var(--pub-soft);
+      border: 1px solid #c7dddd;
+      border-radius: 5px;
+      font-style: normal;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .lsc-section {
+      margin-top: 56px;
+      padding-top: 6px;
+    }
+
+    .lsc-heading { font-size: 1.35rem; }
+
+    .no-results {
+      padding: 28px;
+      color: var(--pub-muted);
+      background: var(--pub-surface);
+      border: 1px dashed #bcc9cf;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .publications-page .container { width: min(100% - 28px, 1080px); }
+      .publications-page header .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding-block: 18px;
+      }
+      .publications-page nav ul { gap: 7px 16px; }
+      .publications-page main { padding-block: 34px 54px; }
+      .publication-filter { padding: 16px; margin-bottom: 34px; }
+      .filter-button { flex: 1 1 auto; }
+      .pub { padding: 18px 17px 17px 21px; }
+      .lsc-heading { align-items: flex-start; }
+      .lsc-heading::after { margin-top: 0.65em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .filter-button { transition: none; }
+    }
+  </style>
+
 </head>
 
 <body class="publications-page">
-  <header>
+<header>
     <div class="container">
       <h1>Ajit Kumar Mehta</h1>
 
@@ -49,308 +372,31 @@
       </a>
     </div>
 
-    <!-- Refereed publications -->
-    <section class="section" aria-labelledby="refereed">
-      <h3 id="refereed">Refereed publications</h3>
+    
 
-      <ol class="pub-list">
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/l3ql-mv6v" target="_blank" rel="noopener">
-              Searching for intermediate mass ratio binary black hole mergers in the third observing run of LIGO-Virgo-KAGRA
-            </a>
-          </p>
-          <p class="pub-authors">
-            M. H. Cheung, D. Wadekar, <strong>A. K. Mehta</strong>, T. Islam, J. Roulet, E. Berti, T. Venumadhav, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 113, 023003 (2025)</em>
-          </p>
-        </li>
-        
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://arxiv.org/abs/2507.08318" target="_blank" rel="noopener">
-              Improving gravitational wave search sensitivity with TIER: Trigger Inference using Extended strain Representation
-            </a>
-          </p>
-          <p class="pub-authors">
-            D. Wadekar, A. Pimpalkar, M. H.-Y. Cheung, B. Wandelt, E. Berti, <strong>A. K. Mehta</strong>, T. Venumadhav, J. Roulet, T. Islam, B. Zackay, J. Mushkin, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>arXiv:2507.08318 (2025)</em> <span class="tag acc">Accepted by PRD</span>
-          </p>
-        </li>
-        
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://doi.org/10.1103/mc85-361v" target="_blank" rel="noopener">
-              Binary black hole population inference combining confident and marginal events from the <span style="font-variant: all-small-caps;">IAS-HM</span> search pipeline
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, D. Wadekar, I. Anantpurkar, J. Roulet, T. Venumadhav, T. Islam, J. Mushkin, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 112, 124023 (2025)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/vqj2-7qpz" target="_blank" rel="noopener">
-              Sampler-free gravitational wave inference using matrix multiplication
-            </a>
-          </p>
-          <p class="pub-authors">
-            Jonathan Mushkin et al. [with <strong>A. K. Mehta</strong>]
-          </p>
-          <p class="pub-venue">
-            <em>Phys.Rev.D 112 10, 104025 (2025)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/pk8n-fxvw" target="_blank" rel="noopener">
-              Data-driven extraction, phenomenology and modeling of eccentric harmonics in binary black hole merger waveforms
-            </a>
-          </p>
-          <p class="pub-authors">
-            T. Islam, T. Venumadhav, <strong>A. K. Mehta</strong>, I. Anantpurkar, D. Wadekar, J. Roulet, J. Mushkin, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 112, 044070 (2025)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.111.024049" target="_blank" rel="noopener">
-              New binary black hole mergers in the LIGO–Virgo O3b data
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, S. Olsen, D. Wadekar, J. Roulet, T. Venumadhav, J. Mushkin, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 111, 024049 (2025)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084035" target="_blank" rel="noopener">
-              A new approach to template banks of gravitational waves with higher harmonics: reducing matched-filtering cost by over an order of magnitude
-            </a>
-          </p>
-          <p class="pub-authors">
-            D. Wadekar, T. Venumadhav, <strong>A. K. Mehta</strong>, J. Roulet, S. Olsen, J. Mushkin, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 110, 084035 (2024)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.044063" target="_blank" rel="noopener">
-              New search pipeline for gravitational waves with higher-order modes using mode-by-mode filtering
-            </a>
-          </p>
-          <p class="pub-authors">
-            D. Wadekar, T. Venumadhav, J. Roulet, <strong>A. K. Mehta</strong>, B. Zackay, J. Mushkin, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 110, 044063 (2024)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://arxiv.org/abs/2303.18039" target="_blank" rel="noopener">
-              Laying the foundation of the effective-one-body waveform models SEOBNRv5: improved accuracy and efficiency for spinning non-precessing binary black holes
-            </a>
-          </p>
-          <p class="pub-authors">
-            Lorenzo Pompili et al. [with <strong>A. K. Mehta</strong>]
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 108, 124035 (2023)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.107.044020" target="_blank" rel="noopener">
-              Tests of General Relativity with Gravitational-Wave Observations using a Flexible–Theory-Independent Method
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, A. Buonanno, A. Ghosh, N. Sennett, J. Steinhoff
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 107, 044020 (2023)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.043036" target="_blank" rel="noopener">
-              Detection and parameter estimation challenges of Type-II lensed binary black hole signals
-            </a>
-          </p>
-          <p class="pub-authors">
-            A. Vijayakumar, <strong>A. K. Mehta</strong>, A. Ganguly
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 108, 043036 (2023)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ac4dfa" target="_blank" rel="noopener">
-              Constraints on compact dark matter from gravitational wave microlensing
-            </a>
-          </p>
-          <p class="pub-authors">
-            S. Basak, A. Ganguly, K. Haris, S. Kapadia, <strong>A. K. Mehta</strong>, P. Ajith
-          </p>
-          <p class="pub-venue">
-            <em>The Astrophysical Journal Letters (ApJL), 926, L28 (2022)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac3130" target="_blank" rel="noopener">
-              Observing intermediate-mass black holes and the upper–stellar-mass gap with LIGO and Virgo
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, A. Buonanno, J. Gair, M. C. Miller, E. Farag, R. J. deBoer, M. Wiescher, F.X. Timmes
-          </p>
-          <p class="pub-venue">
-            <em>The Astrophysical Journal (ApJ), 924(1) (2022)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac33a0" target="_blank" rel="noopener">
-              A detailed analysis of GW190521 with phenomenological waveform models
-            </a>
-          </p>
-          <p class="pub-authors">
-            H. Estellés et al. [with <strong>A. K. Mehta</strong>]
-          </p>
-          <p class="pub-venue">
-            <em>The Astrophysical Journal, 924(2) (2022)</em>
-          </p>
-        </li>
-        
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.024038" target="_blank" rel="noopener">
-              Testing the nature of gravitational-wave polarizations using strongly lensed signals
-            </a>
-          </p>
-          <p class="pub-authors">
-            S. Goyal, K. Haris, <strong>A. K. Mehta</strong>, P. Ajith
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 103, 024038 (2021)</em>
-          </p>
-        </li>
-        
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.101.024032" target="_blank" rel="noopener">
-              Testing the “no-hair” nature of binary black holes using the consistency of multipolar gravitational radiation
-            </a>
-          </p>
-          <p class="pub-authors">
-            T. Islam, <strong>A. K. Mehta</strong>, A. Ghosh, V. Varma, P. Ajith, B. S. Sathyaprakash
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 101, 024032 (2020)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ab0c0f" target="_blank" rel="noopener">
-              Search for gravitational lensing signatures in LIGO and Virgo events
-            </a>
-          </p>
-          <p class="pub-authors">
-            O. Hannuksela, K. Haris, K. Ng, S. Kumar, <strong>A. K. Mehta</strong>, D. Keitel, T. F. Li, P. Ajith
-          </p>
-          <p class="pub-venue">
-            <em>Astrophysical Journal Letters (ApJL), 874(1) (2019)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.024032" target="_blank" rel="noopener">
-              Including mode mixing in a higher-multipole model for gravitational waveforms from nonspinning black-hole binaries
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, P. Tiwari, N. K. Johnson-McDaniel, C. K. Mishra, V. Varma, P. Ajith
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 100, 024032 (2019)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.99.104056" target="_blank" rel="noopener">
-              A “no-hair” test for binary black holes
-            </a>
-          </p>
-          <p class="pub-authors">
-            S. Dhanpal, A. Ghosh, <strong>A. K. Mehta</strong>, P. Ajith, B. S. Sathyaprakash
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 99, 104056 (2019)</em>
-          </p>
-        </li>
-
-        <li class="pub">
-          <p class="pub-title">
-            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.124010" target="_blank" rel="noopener">
-              Accurate inspiral–merger–ringdown gravitational waveforms for non-spinning black-hole binaries including the effect of subdominant modes
-            </a>
-          </p>
-          <p class="pub-authors">
-            <strong>A. K. Mehta</strong>, C. K. Mishra, V. Varma, P. Ajith
-          </p>
-          <p class="pub-venue">
-            <em>Phys. Rev. D 96, 124010 (2017)</em>
-          </p>
-        </li>
-      </ol>
+    <section class="publication-filter" aria-labelledby="filter-label">
+      <p class="filter-label" id="filter-label">Filter by research topic</p>
+      <div class="filter-options" role="group" aria-label="Publication topic filters">
+        <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-button" type="button" data-filter="searches" aria-pressed="false">Searches</button>
+        <button class="filter-button" type="button" data-filter="waveforms" aria-pressed="false">Waveform Modeling</button>
+        <button class="filter-button" type="button" data-filter="tests-gr" aria-pressed="false">Tests of GR</button>
+        <button class="filter-button" type="button" data-filter="lensing" aria-pressed="false">Gravitational Lensing</button>
+        <button class="filter-button" type="button" data-filter="populations" aria-pressed="false">Populations &amp; Astrophysics</button>
+        <button class="filter-button" type="button" data-filter="inference" aria-pressed="false">Inference &amp; Methods</button>
+      </div>
+      <p class="filter-summary" aria-live="polite"><span id="visible-count">32</span> publications shown</p>
     </section>
 
-    
-    
-    
-    
-    <!-- Preprints -->
-    <section class="section" aria-labelledby="preprints">
-      <h3 id="preprints">Preprints on arXiv</h3>
-
+    <div class="main-publications" aria-label="Main publications">
+    <section class="year-group" data-year-group="2026" aria-labelledby="year-2026">
+      <h3 class="year-heading" id="year-2026">2026</h3>
       <ol class="pub-list">
-
-         <li class="pub">
+<li class="pub" data-topics="populations inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2609.05118" target="_blank" rel="noopener">
              Probing Neutron Star Equation of State Universality with Gravitational Waves
+          </a>
           </p>
           <p class="pub-authors">
             Praveer Tiwari,  <strong>A. K. Mehta</strong>, K. G. Arun
@@ -359,8 +405,8 @@
             <em>arXiv:2609.05118 (2026)</em> <span class="tag ok">Submitted to PRL </span>
           </p>
         </li>
-        
-        <li class="pub">
+
+<li class="pub" data-topics="tests-gr" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2608.07237" target="_blank" rel="noopener">
              Testing the spin-induced multipole moments of compact binary coalescences using the flexible theory-independent framework
@@ -373,8 +419,8 @@
             <em>arXiv:2608.07237 (2026)</em> <span class="tag ok">Submitted to PRD </span>
           </p>
         </li>
-        
-        <li class="pub">
+
+<li class="pub" data-topics="lensing inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2607.21834" target="_blank" rel="noopener">
              The diffraction-lensing interpretation of GW231123 with astrophysical priors
@@ -388,7 +434,7 @@
           </p>
         </li>
 
-        <li class="pub">
+<li class="pub" data-topics="inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2605.11280" target="_blank" rel="noopener">
               Discovery of Interpretable Surrogates via Agentic AI: Application to Gravitational Waves
@@ -401,8 +447,8 @@
             <em>arXiv:2605.11280 (2026)</em> <span class="tag ok">Submitted to PRX Intelligence</span>
           </p>
         </li>
-        
-        <li class="pub">
+
+<li class="pub" data-topics="searches" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2603.05784" target="_blank" rel="noopener">
               Searching for precessing binary systems with mode-by-mode filtering and marginalization
@@ -415,8 +461,96 @@
             <em>arXiv:2603.05784 (2026)</em> <span class="tag ok">Submitted to PRD</span>
           </p>
         </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2025" aria-labelledby="year-2025">
+      <h3 class="year-heading" id="year-2025">2025</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="searches populations" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/l3ql-mv6v" target="_blank" rel="noopener">
+              Searching for intermediate mass ratio binary black hole mergers in the third observing run of LIGO-Virgo-KAGRA
+            </a>
+          </p>
+          <p class="pub-authors">
+            M. H. Cheung, D. Wadekar, <strong>A. K. Mehta</strong>, T. Islam, J. Roulet, E. Berti, T. Venumadhav, B. Zackay, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 113, 023003 (2025)</em>
+          </p>
+        </li>
 
-        <li class="pub">
+<li class="pub" data-topics="searches inference" data-status="published">
+          <p class="pub-title">
+            <a href="https://arxiv.org/abs/2507.08318" target="_blank" rel="noopener">
+              Improving gravitational wave search sensitivity with TIER: Trigger Inference using Extended strain Representation
+            </a>
+          </p>
+          <p class="pub-authors">
+            D. Wadekar, A. Pimpalkar, M. H.-Y. Cheung, B. Wandelt, E. Berti, <strong>A. K. Mehta</strong>, T. Venumadhav, J. Roulet, T. Islam, B. Zackay, J. Mushkin, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>arXiv:2507.08318 (2025)</em> <span class="tag acc">Accepted by PRD</span>
+          </p>
+        </li>
+
+<li class="pub" data-topics="searches populations inference" data-status="published">
+          <p class="pub-title">
+            <a href="https://doi.org/10.1103/mc85-361v" target="_blank" rel="noopener">
+              Binary black hole population inference combining confident and marginal events from the <span style="font-variant: all-small-caps;">IAS-HM</span> search pipeline
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, D. Wadekar, I. Anantpurkar, J. Roulet, T. Venumadhav, T. Islam, J. Mushkin, B. Zackay, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 112, 124023 (2025)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="inference" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/vqj2-7qpz" target="_blank" rel="noopener">
+              Sampler-free gravitational wave inference using matrix multiplication
+            </a>
+          </p>
+          <p class="pub-authors">
+            Jonathan Mushkin et al. [with <strong>A. K. Mehta</strong>]
+          </p>
+          <p class="pub-venue">
+            <em>Phys.Rev.D 112 10, 104025 (2025)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="waveforms" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/pk8n-fxvw" target="_blank" rel="noopener">
+              Data-driven extraction, phenomenology and modeling of eccentric harmonics in binary black hole merger waveforms
+            </a>
+          </p>
+          <p class="pub-authors">
+            T. Islam, T. Venumadhav, <strong>A. K. Mehta</strong>, I. Anantpurkar, D. Wadekar, J. Roulet, J. Mushkin, B. Zackay, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 112, 044070 (2025)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="searches" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.111.024049" target="_blank" rel="noopener">
+              New binary black hole mergers in the LIGO–Virgo O3b data
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, S. Olsen, D. Wadekar, J. Roulet, T. Venumadhav, J. Mushkin, B. Zackay, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 111, 024049 (2025)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="searches" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2501.17939" target="_blank" rel="noopener">
               Significant increase in sensitive volume of a gravitational wave search upon including higher harmonics
@@ -430,7 +564,7 @@
           </p>
         </li>
 
-        <li class="pub">
+<li class="pub" data-topics="waveforms inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2504.12420" target="_blank" rel="noopener">
               gwharmone: first data-driven surrogate for eccentric harmonics in binary black hole merger waveforms
@@ -443,8 +577,86 @@
             <em>arXiv:2504.12420 (2025)</em> <span class="tag ok">Submitted to PRL</span>
           </p>
         </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2024" aria-labelledby="year-2024">
+      <h3 class="year-heading" id="year-2024">2024</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="searches" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084035" target="_blank" rel="noopener">
+              A new approach to template banks of gravitational waves with higher harmonics: reducing matched-filtering cost by over an order of magnitude
+            </a>
+          </p>
+          <p class="pub-authors">
+            D. Wadekar, T. Venumadhav, <strong>A. K. Mehta</strong>, J. Roulet, S. Olsen, J. Mushkin, B. Zackay, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 110, 084035 (2024)</em>
+          </p>
+        </li>
 
-        <li class="pub">
+<li class="pub" data-topics="searches" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.044063" target="_blank" rel="noopener">
+              New search pipeline for gravitational waves with higher-order modes using mode-by-mode filtering
+            </a>
+          </p>
+          <p class="pub-authors">
+            D. Wadekar, T. Venumadhav, J. Roulet, <strong>A. K. Mehta</strong>, B. Zackay, J. Mushkin, M. Zaldarriaga
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 110, 044063 (2024)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2023" aria-labelledby="year-2023">
+      <h3 class="year-heading" id="year-2023">2023</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="waveforms" data-status="published">
+          <p class="pub-title">
+            <a href="https://arxiv.org/abs/2303.18039" target="_blank" rel="noopener">
+              Laying the foundation of the effective-one-body waveform models SEOBNRv5: improved accuracy and efficiency for spinning non-precessing binary black holes
+            </a>
+          </p>
+          <p class="pub-authors">
+            Lorenzo Pompili et al. [with <strong>A. K. Mehta</strong>]
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 108, 124035 (2023)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="tests-gr" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.107.044020" target="_blank" rel="noopener">
+              Tests of General Relativity with Gravitational-Wave Observations using a Flexible–Theory-Independent Method
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, A. Buonanno, A. Ghosh, N. Sennett, J. Steinhoff
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 107, 044020 (2023)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="lensing inference" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.043036" target="_blank" rel="noopener">
+              Detection and parameter estimation challenges of Type-II lensed binary black hole signals
+            </a>
+          </p>
+          <p class="pub-authors">
+            A. Vijayakumar, <strong>A. K. Mehta</strong>, A. Ganguly
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 108, 043036 (2023)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="searches" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2312.06631" target="_blank" rel="noopener">
               New black hole mergers in the LIGO-Virgo O3 data from a gravitational wave search including higher-order harmonics
@@ -457,8 +669,140 @@
             <em>arXiv:2312.06631 (2023)</em> <span class="tag acc">Submitted to PRD</span>
           </p>
         </li>
-        
-        <li class="pub">
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2022" aria-labelledby="year-2022">
+      <h3 class="year-heading" id="year-2022">2022</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="lensing populations" data-status="published">
+          <p class="pub-title">
+            <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ac4dfa" target="_blank" rel="noopener">
+              Constraints on compact dark matter from gravitational wave microlensing
+            </a>
+          </p>
+          <p class="pub-authors">
+            S. Basak, A. Ganguly, K. Haris, S. Kapadia, <strong>A. K. Mehta</strong>, P. Ajith
+          </p>
+          <p class="pub-venue">
+            <em>The Astrophysical Journal Letters (ApJL), 926, L28 (2022)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="populations" data-status="published">
+          <p class="pub-title">
+            <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac3130" target="_blank" rel="noopener">
+              Observing intermediate-mass black holes and the upper–stellar-mass gap with LIGO and Virgo
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, A. Buonanno, J. Gair, M. C. Miller, E. Farag, R. J. deBoer, M. Wiescher, F.X. Timmes
+          </p>
+          <p class="pub-venue">
+            <em>The Astrophysical Journal (ApJ), 924(1) (2022)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="waveforms inference" data-status="published">
+          <p class="pub-title">
+            <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac33a0" target="_blank" rel="noopener">
+              A detailed analysis of GW190521 with phenomenological waveform models
+            </a>
+          </p>
+          <p class="pub-authors">
+            H. Estellés et al. [with <strong>A. K. Mehta</strong>]
+          </p>
+          <p class="pub-venue">
+            <em>The Astrophysical Journal, 924(2) (2022)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2021" aria-labelledby="year-2021">
+      <h3 class="year-heading" id="year-2021">2021</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="tests-gr lensing" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.024038" target="_blank" rel="noopener">
+              Testing the nature of gravitational-wave polarizations using strongly lensed signals
+            </a>
+          </p>
+          <p class="pub-authors">
+            S. Goyal, K. Haris, <strong>A. K. Mehta</strong>, P. Ajith
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 103, 024038 (2021)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2020" aria-labelledby="year-2020">
+      <h3 class="year-heading" id="year-2020">2020</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="tests-gr" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.101.024032" target="_blank" rel="noopener">
+              Testing the “no-hair” nature of binary black holes using the consistency of multipolar gravitational radiation
+            </a>
+          </p>
+          <p class="pub-authors">
+            T. Islam, <strong>A. K. Mehta</strong>, A. Ghosh, V. Varma, P. Ajith, B. S. Sathyaprakash
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 101, 024032 (2020)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2019" aria-labelledby="year-2019">
+      <h3 class="year-heading" id="year-2019">2019</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="lensing" data-status="published">
+          <p class="pub-title">
+            <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ab0c0f" target="_blank" rel="noopener">
+              Search for gravitational lensing signatures in LIGO and Virgo events
+            </a>
+          </p>
+          <p class="pub-authors">
+            O. Hannuksela, K. Haris, K. Ng, S. Kumar, <strong>A. K. Mehta</strong>, D. Keitel, T. F. Li, P. Ajith
+          </p>
+          <p class="pub-venue">
+            <em>Astrophysical Journal Letters (ApJL), 874(1) (2019)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="waveforms" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.024032" target="_blank" rel="noopener">
+              Including mode mixing in a higher-multipole model for gravitational waveforms from nonspinning black-hole binaries
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, P. Tiwari, N. K. Johnson-McDaniel, C. K. Mishra, V. Varma, P. Ajith
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 100, 024032 (2019)</em>
+          </p>
+        </li>
+
+<li class="pub" data-topics="tests-gr" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.99.104056" target="_blank" rel="noopener">
+              A “no-hair” test for binary black holes
+            </a>
+          </p>
+          <p class="pub-authors">
+            S. Dhanpal, A. Ghosh, <strong>A. K. Mehta</strong>, P. Ajith, B. S. Sathyaprakash
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 99, 104056 (2019)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section class="year-group" data-year-group="2018" aria-labelledby="year-2018">
+      <h3 class="year-heading" id="year-2018">2018</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="lensing inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/1807.07062" target="_blank" rel="noopener">
               Identifying strongly lensed gravitational wave signals from binary black hole mergers
@@ -473,13 +817,30 @@
         </li>
       </ol>
     </section>
-
-     <!-- LSC papers -->
-    <section class="section" aria-labelledby="lsc">
-      <h3 id="lsc">LIGO Scientific Collaboration papers with significant contribution</h3>
-
+    <section class="year-group" data-year-group="2017" aria-labelledby="year-2017">
+      <h3 class="year-heading" id="year-2017">2017</h3>
       <ol class="pub-list">
-        <li class="pub">
+<li class="pub" data-topics="waveforms" data-status="published">
+          <p class="pub-title">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.124010" target="_blank" rel="noopener">
+              Accurate inspiral–merger–ringdown gravitational waveforms for non-spinning black-hole binaries including the effect of subdominant modes
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>A. K. Mehta</strong>, C. K. Mishra, V. Varma, P. Ajith
+          </p>
+          <p class="pub-venue">
+            <em>Phys. Rev. D 96, 124010 (2017)</em>
+          </p>
+        </li>
+      </ol>
+    </section>
+    </div>
+
+    <section class="lsc-section" aria-labelledby="lsc">
+      <h3 class="lsc-heading" id="lsc">LIGO Scientific Collaboration papers with significant contribution</h3>
+      <ol class="pub-list">
+<li class="pub" data-topics="tests-gr" data-status="lsc">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.122002" target="_blank" rel="noopener">
               Tests of General Relativity with Binary Black Holes from the second LIGO-Virgo Gravitational-Wave Transient Catalog
@@ -493,7 +854,7 @@
           </p>
         </li>
 
-        <li class="pub">
+<li class="pub" data-topics="lensing" data-status="lsc">
           <p class="pub-title">
             <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac23db" target="_blank" rel="noopener">
               Search for lensing signatures in the gravitational-wave observations from the first half of LIGO-Virgo's third observing run
@@ -507,7 +868,7 @@
           </p>
         </li>
 
-        <li class="pub">
+<li class="pub" data-topics="tests-gr" data-status="lsc">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2112.06861" target="_blank" rel="noopener">
               Tests of General Relativity with GWTC-3
@@ -522,7 +883,52 @@
         </li>
       </ol>
     </section>
-    
+
+    <p class="no-results" id="no-results" hidden>No publications match this topic.</p>
   </main>
+
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('.filter-button')];
+      const publications = [...document.querySelectorAll('.pub[data-topics]')];
+      const yearGroups = [...document.querySelectorAll('.year-group')];
+      const lscSection = document.querySelector('.lsc-section');
+      const count = document.getElementById('visible-count');
+      const empty = document.getElementById('no-results');
+
+      function applyFilter(topic) {
+        let visible = 0;
+
+        publications.forEach((publication) => {
+          const topics = publication.dataset.topics.split(/\s+/);
+          const matches = topic === 'all' || topics.includes(topic);
+          publication.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        yearGroups.forEach((group) => {
+          group.hidden = !group.querySelector('.pub:not([hidden])');
+        });
+
+        if (lscSection) {
+          lscSection.hidden = !lscSection.querySelector('.pub:not([hidden])');
+        }
+
+        buttons.forEach((button) => {
+          const active = button.dataset.filter === topic;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+
+        count.textContent = String(visible);
+        empty.hidden = visible !== 0;
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => applyFilter(button.dataset.filter));
+      });
+    })();
+  </script>
+
 </body>
 </html>
