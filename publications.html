@@ -15,324 +15,81 @@
   <!-- Page-scoped polish (works with/without styles.css) -->
 
   <style>
-    :root {
-      --pub-ink: #17243a;
-      --pub-muted: #5f6c7b;
-      --pub-accent: #176b70;
-      --pub-accent-dark: #0f5358;
-      --pub-line: #dbe3e8;
-      --pub-surface: #ffffff;
-      --pub-soft: #eef5f5;
-      --pub-page: #f7f9fa;
-      --pub-shadow: 0 8px 24px rgba(23, 36, 58, 0.07);
-    }
-
-    * { box-sizing: border-box; }
-
-    body.publications-page {
-      margin: 0;
-      color: var(--pub-ink);
-      background: var(--pub-page);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    .publications-page .container {
-      width: min(1080px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .publications-page header {
-      color: #fff;
-      background: #14243b;
-      border-bottom: 3px solid var(--pub-accent);
-    }
-
-    .publications-page header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-      min-height: 78px;
-    }
-
-    .publications-page header h1 {
-      margin: 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.35rem, 2vw, 1.75rem);
-      line-height: 1.2;
-    }
-
-    .publications-page nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 22px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .publications-page nav a {
-      color: #dce7ee;
-      text-decoration: none;
-      font-size: 0.92rem;
-    }
-
-    .publications-page nav a:hover,
-    .publications-page nav a:focus-visible,
-    .publications-page nav a.active {
-      color: #fff;
-    }
-
-    .publications-page nav a.active {
-      padding-bottom: 5px;
-      border-bottom: 2px solid #63c2c2;
-    }
-
-    .publications-page main { padding-block: 48px 72px; }
-
-    .publications-page .page-title h2 {
-      margin: 0 0 14px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.1rem);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .publications-page .linkbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .publications-page .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 38px;
-      padding: 7px 13px;
-      color: var(--pub-ink);
-      background: var(--pub-surface);
-      border: 1px solid var(--pub-line);
-      border-radius: 999px;
-      box-shadow: 0 2px 10px rgba(23, 36, 58, 0.04);
-      text-decoration: none;
-      font-size: 0.86rem;
-      font-weight: 600;
-    }
-
-    .publications-page .pill:hover,
-    .publications-page .pill:focus-visible {
-      color: var(--pub-accent-dark);
-      border-color: #96bfc1;
-    }
-
-    .publications-page .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--pub-accent);
-      border-radius: 50%;
-    }
-
+    /* New controls only. The site's existing styles.css remains in charge of
+       the page header, navigation, typography, spacing, and publication list. */
     .publication-filter {
-      margin: 0 0 42px;
-      padding: 20px;
-      background: var(--pub-surface);
-      border: 1px solid var(--pub-line);
-      border-radius: 14px;
-      box-shadow: var(--pub-shadow);
+      margin: 1.25rem 0 2.25rem;
     }
 
     .filter-label {
-      margin: 0 0 11px;
-      font-size: 0.86rem;
+      margin: 0 0 0.7rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
     }
 
     .filter-options {
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 0.55rem;
     }
 
     .filter-button {
-      min-height: 40px;
-      padding: 8px 14px;
-      color: var(--pub-ink);
-      background: #fff;
-      border: 1px solid #cbd6dc;
-      border-radius: 8px;
+      min-height: 2.35rem;
+      padding: 0.45rem 0.85rem;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(30, 42, 62, 0.2);
+      border-radius: 999px;
       font: inherit;
       font-size: 0.88rem;
       font-weight: 500;
       cursor: pointer;
-      transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
     }
 
-    .filter-button:hover { border-color: var(--pub-accent); }
-    .filter-button:active { transform: translateY(1px); }
+    .filter-button:hover {
+      border-color: #3158ad;
+    }
+
     .filter-button.is-active {
       color: #fff;
-      background: var(--pub-accent);
-      border-color: var(--pub-accent);
+      background: #3158ad;
+      border-color: #3158ad;
     }
 
-    .filter-button:focus-visible,
-    .publications-page a:focus-visible {
-      outline: 3px solid rgba(23, 107, 112, 0.28);
-      outline-offset: 3px;
+    .filter-button:focus-visible {
+      outline: 3px solid rgba(49, 88, 173, 0.25);
+      outline-offset: 2px;
     }
 
     .filter-summary {
-      margin: 12px 0 0;
-      color: var(--pub-muted);
+      margin: 0.65rem 0 0;
+      opacity: 0.68;
       font-size: 0.85rem;
     }
 
-    .year-group { margin-bottom: 42px; }
-
-    .year-heading,
-    .lsc-heading {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 0 0 16px;
-      color: var(--pub-ink);
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.55rem;
-      line-height: 1.25;
-    }
-
-    .year-heading::after,
-    .lsc-heading::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--pub-line);
-    }
-
-    .pub-list {
-      display: grid;
-      gap: 13px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .pub {
-      position: relative;
-      padding: 20px 22px 19px 27px;
-      background: var(--pub-surface);
-      border: 1px solid var(--pub-line);
-      border-radius: 10px;
-      box-shadow: 0 3px 14px rgba(23, 36, 58, 0.035);
-    }
-
-    .pub::before {
-      content: "";
-      position: absolute;
-      inset: 17px auto 17px 0;
-      width: 4px;
-      background: var(--pub-accent);
-      border-radius: 0 4px 4px 0;
-    }
-
-    .pub[hidden],
-    .year-group[hidden],
-    .lsc-section[hidden] { display: none !important; }
-
-    .pub p { margin: 0; }
-
-    .pub-title {
-      margin-bottom: 7px !important;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.08rem;
-      font-weight: 600;
-      line-height: 1.42;
-    }
-
-    .pub-title a {
-      color: var(--pub-ink);
-      text-decoration: none;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .pub-title a:hover,
-    .pub-title a:focus-visible {
-      color: var(--pub-accent-dark);
-      text-decoration: underline;
-    }
-
-    .pub-authors {
-      color: #38485b;
-      font-size: 0.91rem;
-      line-height: 1.55;
-    }
-
-    .pub-venue {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px !important;
-      color: var(--pub-muted);
-      font-size: 0.88rem;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 2px 8px;
-      color: #28585a;
-      background: var(--pub-soft);
-      border: 1px solid #c7dddd;
-      border-radius: 5px;
-      font-style: normal;
-      font-size: 0.75rem;
-      font-weight: 600;
+    .main-publications {
+      margin-bottom: 3rem;
     }
 
     .lsc-section {
-      margin-top: 56px;
-      padding-top: 6px;
+      margin-top: 3.5rem;
     }
 
-    .lsc-heading { font-size: 1.35rem; }
+    .pub[hidden],
+    .lsc-section[hidden],
+    .no-results[hidden] {
+      display: none !important;
+    }
 
     .no-results {
-      padding: 28px;
-      color: var(--pub-muted);
-      background: var(--pub-surface);
-      border: 1px dashed #bcc9cf;
-      border-radius: 10px;
-      text-align: center;
+      padding: 1rem 0;
+      opacity: 0.7;
     }
 
-    @media (max-width: 760px) {
-      .publications-page .container { width: min(100% - 28px, 1080px); }
-      .publications-page header .container {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-        padding-block: 18px;
+    @media (max-width: 700px) {
+      .filter-button {
+        flex: 1 1 auto;
       }
-      .publications-page nav ul { gap: 7px 16px; }
-      .publications-page main { padding-block: 34px 54px; }
-      .publication-filter { padding: 16px; margin-bottom: 34px; }
-      .filter-button { flex: 1 1 auto; }
-      .pub { padding: 18px 17px 17px 21px; }
-      .lsc-heading { align-items: flex-start; }
-      .lsc-heading::after { margin-top: 0.65em; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .filter-button { transition: none; }
     }
   </style>
 
@@ -388,9 +145,7 @@
       <p class="filter-summary" aria-live="polite"><span id="visible-count">32</span> publications shown</p>
     </section>
 
-    <div class="main-publications" aria-label="Main publications">
-    <section class="year-group" data-year-group="2026" aria-labelledby="year-2026">
-      <h3 class="year-heading" id="year-2026">2026</h3>
+    <section class="main-publications" aria-label="Main publications">
       <ol class="pub-list">
 <li class="pub" data-topics="populations inference" data-status="preprint">
           <p class="pub-title">
@@ -461,11 +216,7 @@
             <em>arXiv:2603.05784 (2026)</em> <span class="tag ok">Submitted to PRD</span>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2025" aria-labelledby="year-2025">
-      <h3 class="year-heading" id="year-2025">2025</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="searches populations" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/l3ql-mv6v" target="_blank" rel="noopener">
@@ -577,11 +328,7 @@
             <em>arXiv:2504.12420 (2025)</em> <span class="tag ok">Submitted to PRL</span>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2024" aria-labelledby="year-2024">
-      <h3 class="year-heading" id="year-2024">2024</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="searches" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084035" target="_blank" rel="noopener">
@@ -609,11 +356,7 @@
             <em>Phys. Rev. D 110, 044063 (2024)</em>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2023" aria-labelledby="year-2023">
-      <h3 class="year-heading" id="year-2023">2023</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="waveforms" data-status="published">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2303.18039" target="_blank" rel="noopener">
@@ -669,11 +412,7 @@
             <em>arXiv:2312.06631 (2023)</em> <span class="tag acc">Submitted to PRD</span>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2022" aria-labelledby="year-2022">
-      <h3 class="year-heading" id="year-2022">2022</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="lensing populations" data-status="published">
           <p class="pub-title">
             <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ac4dfa" target="_blank" rel="noopener">
@@ -715,11 +454,7 @@
             <em>The Astrophysical Journal, 924(2) (2022)</em>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2021" aria-labelledby="year-2021">
-      <h3 class="year-heading" id="year-2021">2021</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="tests-gr lensing" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.024038" target="_blank" rel="noopener">
@@ -733,11 +468,7 @@
             <em>Phys. Rev. D 103, 024038 (2021)</em>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2020" aria-labelledby="year-2020">
-      <h3 class="year-heading" id="year-2020">2020</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="tests-gr" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.101.024032" target="_blank" rel="noopener">
@@ -751,11 +482,7 @@
             <em>Phys. Rev. D 101, 024032 (2020)</em>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2019" aria-labelledby="year-2019">
-      <h3 class="year-heading" id="year-2019">2019</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="lensing" data-status="published">
           <p class="pub-title">
             <a href="https://iopscience.iop.org/article/10.3847/2041-8213/ab0c0f" target="_blank" rel="noopener">
@@ -797,11 +524,7 @@
             <em>Phys. Rev. D 99, 104056 (2019)</em>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2018" aria-labelledby="year-2018">
-      <h3 class="year-heading" id="year-2018">2018</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="lensing inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/1807.07062" target="_blank" rel="noopener">
@@ -815,11 +538,7 @@
             <em>arXiv:1807.07062 (2018)</em> <span class="tag acc">Accepted by PRD</span>
           </p>
         </li>
-      </ol>
-    </section>
-    <section class="year-group" data-year-group="2017" aria-labelledby="year-2017">
-      <h3 class="year-heading" id="year-2017">2017</h3>
-      <ol class="pub-list">
+
 <li class="pub" data-topics="waveforms" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.124010" target="_blank" rel="noopener">
@@ -835,7 +554,6 @@
         </li>
       </ol>
     </section>
-    </div>
 
     <section class="lsc-section" aria-labelledby="lsc">
       <h3 class="lsc-heading" id="lsc">LIGO Scientific Collaboration papers with significant contribution</h3>
@@ -891,7 +609,6 @@
     (() => {
       const buttons = [...document.querySelectorAll('.filter-button')];
       const publications = [...document.querySelectorAll('.pub[data-topics]')];
-      const yearGroups = [...document.querySelectorAll('.year-group')];
       const lscSection = document.querySelector('.lsc-section');
       const count = document.getElementById('visible-count');
       const empty = document.getElementById('no-results');
@@ -906,9 +623,6 @@
           if (matches) visible += 1;
         });
 
-        yearGroups.forEach((group) => {
-          group.hidden = !group.querySelector('.pub:not([hidden])');
-        });
 
         if (lscSection) {
           lscSection.hidden = !lscSection.querySelector('.pub:not([hidden])');
