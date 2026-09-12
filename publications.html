@@ -18,7 +18,7 @@
     /* New controls only. The site's existing styles.css remains in charge of
        the page header, navigation, typography, spacing, and publication list. */
     .publication-filter {
-      margin: 1.25rem 0 3.0em;
+      margin: 1.25rem 0 1.5em;
       padding-block: 0;
     }
 
@@ -129,25 +129,24 @@
     <div class="publication-filter" aria-label="Filter publications by research topic">
       <div class="filter-options" role="group" aria-label="Publication topic filters">
         <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-button" type="button" data-filter="analysis" aria-pressed="false"> Detection &amp; Inference</button>
-        <button class="filter-button" type="button" data-filter="lensing" aria-pressed="false">Gravitational Lensing</button>
-        <button class="filter-button" type="button" data-filter="tests-gr" aria-pressed="false">Tests of General Relativity</button>
-        <button class="filter-button" type="button" data-filter="populations" aria-pressed="false">Populations &amp; Astrophysics</button>
+        <button class="filter-button" type="button" data-filter="analysis" aria-pressed="false">Searches &amp; Inference</button>
         <button class="filter-button" type="button" data-filter="waveforms" aria-pressed="false">Waveform Modeling</button>
+        <button class="filter-button" type="button" data-filter="tests-gr" aria-pressed="false">Tests of GR</button>
+        <button class="filter-button" type="button" data-filter="lensing" aria-pressed="false">Gravitational Lensing</button>
+        <button class="filter-button" type="button" data-filter="populations" aria-pressed="false">Populations &amp; Astrophysics</button>
       </div>
     </div>
 
     <div class="main-publications" aria-label="Main publications">
       <ol class="pub-list">
-        
-  <li class="pub" data-topics="populations" data-status="preprint">
+<li class="pub" data-topics="populations inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2609.05118" target="_blank" rel="noopener">
              Probing Neutron Star Equation of State Universality with Gravitational Waves
           </a>
           </p>
           <p class="pub-authors">
-            P. Tiwari,  <strong>A. K. Mehta</strong>, K. G. Arun
+            Praveer Tiwari,  <strong>A. K. Mehta</strong>, K. G. Arun
           </p>
           <p class="pub-venue">
             <em>arXiv:2609.05118 (2026)</em> <span class="tag ok">Submitted to PRL </span>
@@ -168,7 +167,7 @@
           </p>
         </li>
 
-<li class="pub" data-topics="lensing" data-status="preprint">
+<li class="pub" data-topics="lensing inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2607.21834" target="_blank" rel="noopener">
              The diffraction-lensing interpretation of GW231123 with astrophysical priors
@@ -196,20 +195,6 @@
           </p>
         </li>
 
-<li class="pub" data-topics="inference populations" data-status="published">
-          <p class="pub-title">
-            <a href="https://arxiv.org/abs/2604.07388" target="_blank" rel="noopener">
-              GW190711_030756 and GW200114_020818: astrophysical interpretation of two asymmetric binary black hole mergers in the IAS catalog
-            </a>
-          </p>
-          <p class="pub-authors">
-           T. Islam, T. Venumadhav, D. Wadekar, <strong>A. K. Mehta</strong>, J. Roulet, J. Mushkin, M. H.-Y. Cheung, B. Zackay, M. Zaldarriaga
-          </p>
-          <p class="pub-venue">
-            <em>	arXiv:2604.07388 (2026)</em> <span class="tag acc">Accepted by PRD</span>
-          </p>
-        </li>
-        
 <li class="pub" data-topics="searches" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/2603.05784" target="_blank" rel="noopener">
@@ -252,7 +237,7 @@
           </p>
         </li>
 
-<li class="pub" data-topics="populations" data-status="published">
+<li class="pub" data-topics="searches populations inference" data-status="published">
           <p class="pub-title">
             <a href="https://doi.org/10.1103/mc85-361v" target="_blank" rel="noopener">
               Binary black hole population inference combining confident and marginal events from the <span style="font-variant: all-small-caps;">IAS-HM</span> search pipeline
@@ -273,7 +258,7 @@
             </a>
           </p>
           <p class="pub-authors">
-            Jonathan Mushkin et al. [including  <strong>A. K. Mehta</strong>]
+            Jonathan Mushkin et al. [with <strong>A. K. Mehta</strong>]
           </p>
           <p class="pub-venue">
             <em>Phys.Rev.D 112 10, 104025 (2025)</em>
@@ -371,7 +356,7 @@
             </a>
           </p>
           <p class="pub-authors">
-            Lorenzo Pompili et al. [including <strong>A. K. Mehta</strong>]
+            Lorenzo Pompili et al. [with <strong>A. K. Mehta</strong>]
           </p>
           <p class="pub-venue">
             <em>Phys. Rev. D 108, 124035 (2023)</em>
@@ -392,7 +377,7 @@
           </p>
         </li>
 
-<li class="pub" data-topics="lensing" data-status="published">
+<li class="pub" data-topics="lensing inference" data-status="published">
           <p class="pub-title">
             <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.108.043036" target="_blank" rel="noopener">
               Detection and parameter estimation challenges of Type-II lensed binary black hole signals
@@ -448,14 +433,14 @@
           </p>
         </li>
 
-<li class="pub" data-topics="inference" data-status="published">
+<li class="pub" data-topics="waveforms inference" data-status="published">
           <p class="pub-title">
             <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac33a0" target="_blank" rel="noopener">
               A detailed analysis of GW190521 with phenomenological waveform models
             </a>
           </p>
           <p class="pub-authors">
-            H. Estellés et al. [including <strong>A. K. Mehta</strong>]
+            H. Estellés et al. [with <strong>A. K. Mehta</strong>]
           </p>
           <p class="pub-venue">
             <em>The Astrophysical Journal, 924(2) (2022)</em>
@@ -532,7 +517,7 @@
           </p>
         </li>
 
-<li class="pub" data-topics="lensing" data-status="preprint">
+<li class="pub" data-topics="lensing inference" data-status="preprint">
           <p class="pub-title">
             <a href="https://arxiv.org/abs/1807.07062" target="_blank" rel="noopener">
               Identifying strongly lensed gravitational wave signals from binary black hole mergers
